@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/otr.svg" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/beatles.css" />
+    <title>Offtherecordclub - The Beatles</title>
+  </head>
+  <body>
+    <header>
+      <a href="javascript:window.history.back();" class="back-button">Back</a>
+      <h1><a href="/otr.html">OFF THE RECORD CLUB</a></h1>
+    </header>
+    <main>
+      <div class="custom-cursor"></div>
+      <script>
+        const cursor = document.querySelector(".custom-cursor");
+
+        document.addEventListener("mousemove", (e) => {
+          cursor.style.left = `${e.clientX}px`;
+          cursor.style.top = `${e.clientY}px`;
+        });
+      </script>
+      <section class="content">
+        <div class="image-container">
+          <img src="beatles_img/beatles1.png" alt="beatles" />
+        </div>
+        <div class="text">
+          <h2><strong>Title:</strong><span>The Beatles</span></h2>
+          <p><strong>Period:</strong> <span>2024.04 - 2024.05</span></p>
+          <p>
+            <strong>Contribution:</strong> <span>Personal Project • 100%</span>
+          </p>
+          <p>
+            <strong>Tags:</strong>
+            <span class="tags">
+              <a href="graphic.html" class="tag">Graphic</a>
+              <a href="poster.html" class="tag">Poster</a>
+              <a href="typography.html" class="tag">Typo</a>
+            </span>
+          </p>
+          <div class="explain">
+            <p>297 × 420mm</p>
+            <br />
+            <p class="description">
+              최근 레트로가 인기를 끌면서 오래된 음악을 다시 듣는 사람들이 늘고
+              있다. <br />
+              사람들의 기억 속 가장 큰 자리를 차지하고 있는 영국 록 밴드
+              비틀즈를 재해석한 포스터를 만들었다.<br />
+              비틀즈의 노래 <다이아몬드가 달린 하늘의 루시>에서 영감을 받아
+              포스터를 만들었다.<br />
+              강과 하늘, 다이아몬드를 관통하는 파란색을 떠올렸고, 마멀레이드와
+              주황색을 통해 빨간색과 대조했다.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="image-container2">
+        <div class="image1">
+          <img src="beatles_img/beatles_01.png" alt="beatles_01" />
+          <img src="beatles_img/beatles_02.png" alt="beatles_02" />
+          <img src="beatles_img/beatles_03.png" alt="beatles_03" />
+          <img
+            src="beatles_img/beatles_mockup_01.png"
+            alt="beatles_mockup_01"
+          />
+          <img
+            src="beatles_img/beatles_mockup_02.png"
+            alt="beatles_mockup_02"
+          />
+          <img
+            src="beatles_img/beatles_mockup_03.png"
+            alt="beatles_mockup_03"
+          />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

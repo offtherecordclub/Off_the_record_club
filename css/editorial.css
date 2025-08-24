@@ -1,0 +1,449 @@
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "pangramMedium";
+  src: url(/font/Pangram-Medium.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "pangramRegular", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  align-items: center;
+  font-size: 15px;
+  cursor: none;
+}
+
+/* 스크롤바 스타일 최소화 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* 기본 커서 스타일 */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+body:hover .custom-cursor {
+  background-color: rgb(0, 34, 255);
+  border-color: white;
+  width: 30px;
+  height: 30px;
+}
+
+body:not(
+    :has(
+        .nav a:hover,
+        header h1 a:hover,
+        .tags a:hover,
+        .text .view_more a:hover
+      )
+  )
+  .custom-cursor {
+  background-color: black; /* 다시 원래 색 */
+  width: 20px;
+  height: 20px;
+}
+
+.nav a,
+header h1 a,
+.tags a,
+.text .view_more a {
+  cursor: none; /* 기본 커서를 숨김 */
+}
+
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 64px;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  font-family: "pangramRegular";
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  padding: 0.4em 0.7em;
+  border: 2px solid transparent;
+  transition: all 0.1s linear;
+  display: inline-block;
+}
+
+.nav a:hover {
+  border: 1.5px solid black;
+  border-radius: 20px;
+}
+
+.nav a:active {
+  background-color: black;
+  color: white;
+}
+
+.nav span {
+  font-family: "pangramMedium";
+}
+
+.container {
+  margin: 0 200px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  margin-top: 100px;
+  padding-bottom: 100px;
+  align-items: start;
+  justify-content: start;
+  margin-bottom: 50px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* 태그들 사이 간격 증가 */
+}
+
+.tags a {
+  border: 1px solid #000;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-right: 5px;
+  font-family: "pangramRegular";
+  text-decoration: none;
+  color: black;
+}
+
+.tags a:hover {
+  border-color: #929292;
+  color: #929292;
+}
+
+.tags a:active {
+  background-color: #000;
+  border-color: #000;
+  color: white;
+}
+
+details {
+  border-top: 1px solid #000;
+  padding: 20px;
+}
+
+/* 마지막 details 요소만 border-bottom 적용 */
+details:last-of-type {
+  border-bottom: 1px solid #000;
+}
+
+summary {
+  font-family: "pangramRegular";
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%; /* summary가 전체 너비를 차지하도록 설정 */
+  gap: 50px;
+}
+
+summary p {
+  font-family: "pangramBold";
+  flex: 1;
+}
+
+summary .tags {
+  flex: 1.2; /* 가능한 공간을 채워 같은 column에 정렬되도록 함 */
+}
+
+summary::after {
+  content: "";
+  background: url("/img/arrow.svg") no-repeat center;
+  background-size: contain;
+  width: 15px;
+  height: 20px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.content1,
+.content2 {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0px; /* gap을 없애 겹치는 부분 방지 */
+  border: 1px solid black; /* 전체적인 테두리는 부모 요소에서만 설정 */
+  margin-top: 20px;
+}
+
+.image-container,
+.text {
+  padding: 40px;
+  width: auto;
+  height: auto;
+  box-sizing: border-box; /* 패딩과 보더를 포함한 크기 계산 */
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.content1 .image-container {
+  border-right: 1px solid black; /* 중간 선 */
+  padding: 40px;
+  min-width: 800px; /* 원하는 고정된 너비 */
+  height: auto;
+  overflow: hidden;
+}
+
+.content2 .image-container {
+  border-right: 1px solid black; /* 중간 선 */
+  padding: 40px;
+  min-width: 800px; /* 원하는 고정된 너비 */
+  height: auto;
+  overflow: visible;
+  position: relative;
+}
+
+.content2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.content1 img {
+  max-width: 300px;
+  height: auto;
+}
+
+.text {
+  flex: 1;
+  font-family: "pangramRegular";
+  font-size: 14px;
+  flex-direction: column;
+  line-height: clamp(14px, 2.1vw, 24px);
+  display: flex;
+}
+
+.text .explain span {
+  font-family: "SUIT-Regular";
+}
+
+/* .view_more를 가운데 정렬 */
+.text .view_more {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  width: 100%; /* 부모 요소 너비를 가득 차도록 설정 */
+  margin-top: 60px;
+}
+
+.text .view_more a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 12px;
+  color: #929292;
+  padding-bottom: 2px;
+  transition: 0.2s;
+}
+
+.text .view_more :hover {
+  color: #ccc;
+}
+
+.text .view_more :active {
+  color: #505050;
+}
+
+@media (max-width: 1600px) {
+  .content1,
+  .content2 {
+    flex-direction: column; /* 세로 정렬 */
+    display: flex;
+  }
+
+  .content1 .image-container,
+  .content2 .image-container {
+    min-width: 500px;
+    width: auto; /* 이미지 컨테이너 너비를 부모 요소에 맞춤 */
+    border-right: none; /* 기존 border 제거 */
+    border-bottom: 1px solid black; /* 아래쪽에 선 추가 */
+    text-align: center; /* 이미지 중앙 정렬 */
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    margin: 0 50px;
+    margin-top: 50px;
+    width: calc(100% - 100px);
+    overflow: hidden; /* 가로 스크롤 방지 */
+  }
+
+  .nav {
+    gap: 50px;
+  }
+
+  .nav a {
+    font-size: 0.9rem;
+  }
+
+  .content1,
+  .content2 {
+    flex-direction: column; /* 세로 정렬 */
+    display: flex;
+  }
+
+  .image-container {
+    width: auto; /* 이미지 컨테이너 너비를 부모 요소에 맞춤 */
+    border-right: none; /* 기존 border 제거 */
+    border-bottom: 1px solid black;
+    text-align: center; /* 이미지 중앙 정렬 */
+  }
+
+  .text {
+    width: 100%;
+    flex: 1;
+    padding: 20px; /* 여백 조정 */
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 0 30px; /* 좌우 여백 조정 */
+    margin-top: 50px;
+    width: calc(100% - 60px);
+    overflow: hidden;
+  }
+
+  summary p {
+    line-height: 24px;
+  }
+
+  .nav {
+    gap: 25px;
+  }
+
+  .nav a {
+    font-size: 0.85rem;
+  }
+
+  .content1,
+  .content2 {
+    width: 100%;
+    flex-direction: column; /* 세로 정렬 */
+    display: flex;
+  }
+
+  .image-container {
+    width: 100%; /* 이미지 컨테이너 너비를 부모 요소에 맞춤 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: none; /* 기존 border 제거 */
+    border-bottom: 1px solid black; /* 아래쪽에 선 추가 */
+    box-sizing: border-box;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 1.8;
+    padding: 20px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 0 15px;
+    margin-top: 40px;
+    width: calc(100% - 30px);
+    overflow: hidden;
+  }
+
+  .content1,
+  .content2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 부모 요소 안에서 중앙 정렬 */
+  }
+
+  .image-container {
+    width: 100%;
+    max-width: 500px; /* 최대 크기를 500px로 제한 */
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    border-bottom: none !important ;
+  }
+
+  .content1 img,
+  .content2 img {
+    max-width: 60%; /* 부모 요소를 넘지 않도록 */
+    height: auto;
+    display: block;
+    object-fit: contain;
+    margin: 0 auto; /* 완벽한 중앙 정렬 */
+  }
+
+  .text {
+    font-size: 12px;
+    line-height: 1.6;
+    padding: 10px;
+  }
+}

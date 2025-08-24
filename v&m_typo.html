@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/otr.svg" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/v&m_typo.css" />
+    <title>Offtherecordclub - V&M Typography</title>
+  </head>
+  <body>
+    <header>
+      <a href="javascript:window.history.back();" class="back-button">Back</a>
+      <h1><a href="/otr.html">OFF THE RECORD CLUB</a></h1>
+    </header>
+    <main>
+      <div class="custom-cursor"></div>
+      <script>
+        const cursor = document.querySelector(".custom-cursor");
+
+        document.addEventListener("mousemove", (e) => {
+          cursor.style.left = `${e.clientX}px`;
+          cursor.style.top = `${e.clientY}px`;
+        });
+      </script>
+      <section class="content">
+        <div class="image-container">
+          <img src="v&m_typo_img/v&m_typo1.png" alt="v&m_typo" />
+        </div>
+        <div class="text">
+          <h2>
+            <strong>Title:</strong><span>Visual & Media Design Typography</span>
+          </h2>
+          <p><strong>Period:</strong> <span>2022.09 - 2022.12</span></p>
+          <p>
+            <strong>Contribution:</strong> <span>Personal Project • 100%</span>
+          </p>
+          <p>
+            <strong>Tags:</strong>
+            <span class="tags">
+              <a href="graphic.html" class="tag">Graphic</a>
+              <a href="typography.html" class="tag">Typo</a>
+            </span>
+          </p>
+          <div class="explain">
+            <p>297 × 420mm</p>
+            <br />
+            <p class="description">
+              Visual & Media Design 수업에서 진행한 타이포그래픽 디자인이다.
+              <br />이 작업은 '최윤경' 이름으로 진행한 그래픽으로 다양한 변화를
+              시도했다.<br />
+              '나'를 '피어나는 꽃'에 비유하여 만든 그래픽으로 흔들림과 겹쳐짐을
+              다양하게 표현하였다.<br />
+              <h6> 시리즈로 작업했으며, 그래픽은 <a href="graphic_shape.html" class="graphic_shape"
+                > "Visual & Media Design Graphic Shape" </a
+              >에서 볼 수 있다.</h6>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="image-container2">
+        <div class="image1">
+          <img src="v&m_typo_img/v&m_typo_09.gif" alt="typo_experi_" />
+        </div>
+        <div class="image2">
+          <img src="v&m_typo_img/v&m_typo_01.png" alt="v&m_typo_01" />
+          <img src="v&m_typo_img/v&m_typo_02.png" alt="v&m_typo_02" />
+          <img src="v&m_typo_img/v&m_typo_03.png" alt="v&m_typo_03" />
+          <img src="v&m_typo_img/v&m_typo_04.png" alt="v&m_typo_04" />
+          <img src="v&m_typo_img/v&m_typo_05.png" alt="v&m_typo_05" />
+          <img src="v&m_typo_img/v&m_typo_06.png" alt="v&m_typo_06" />
+          <img src="v&m_typo_img/v&m_typo_07.png" alt="v&m_typo_07" />
+          <img src="v&m_typo_img/v&m_typo_08.png" alt="v&m_typo_08" />
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

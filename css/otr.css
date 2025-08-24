@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 전체 페이지 설정 */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: "pangramRegular", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* 12컬럼 그리드 설정 */
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px; /* 컬럼 간 간격 */
+  margin: 0 100px; /* 좌우 마진 100px */
+  height: 100vh;
+  align-items: center;
+}
+
+/* 콘텐츠 공통 설정 */
+#contents1,
+#contents2,
+#contents3,
+#contents4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  grid-column: span 12;
+}
+
+/* 이미지 컨테이너 */
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+  transition: opacity 1s ease-in-out; /* 이미지 전환 효과 추가 */
+}
+
+.background_img {
+  width: 23vw;
+  height: 33vw;
+  display: block;
+  opacity: 70%;
+}
+
+/* 텍스트 배치 */
+.left,
+.middle,
+.right {
+  position: absolute;
+  top: 40vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.left {
+  left: 5vw;
+}
+.middle {
+  left: 48vw;
+}
+.right {
+  left: 80vw;
+}
+
+/* 텍스트 스타일 */
+.left h3,
+.middle h3,
+.right h3 {
+  font-size: clamp(10px, 1.2vw, 16px);
+  font-family: "pangramBold";
+}
+
+.left .explain p,
+.middle_menu,
+.right_menu {
+  font-family: "pangramRegular";
+  font-size: clamp(10px, 1.2vw, 16px);
+  line-height: clamp(14px, 2.1vw, 24px);
+  margin-top: 1.5vw;
+}
+
+.explain span {
+  font-family: "SUIT-Regular";
+  font-size: clamp(10px, 1.2vw, 16px);
+  line-height: clamp(14px, 2.1vw, 24px);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-left: -0.7vw;
+}
+
+ul li {
+  line-height: clamp(14px, 2.1vw, 32px);
+}
+
+ul li a {
+  text-decoration: none;
+  color: black;
+  padding: 0.2em 0.7em;
+  border: 2px solid transparent;
+  transition: all 0.1s linear;
+  display: inline-block;
+}
+
+ul li a:hover {
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+/* 클릭한 후 (active 클래스 추가됨) */
+ul li a:active {
+  background-color: black;
+  color: white;
+}
+
+/* 반응형 설정 */
+@media screen and (max-width: 1024px) {
+  .left,
+  .middle,
+  .right {
+    top: 48vh;
+  }
+  .left {
+    left: 10vw;
+  }
+  .middle {
+    left: 60vw;
+  }
+  .right {
+    left: 80vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .left,
+  .middle,
+  .right {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-bottom: 5vw;
+  }
+  .image-container {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 480px) {
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+      margin: 0 20px;
+    }
+    .left,
+    .middle,
+    .right {
+      grid-column: span 2;
+    }
+  }
+  .image-container {
+    justify-content: center;
+  }
+}

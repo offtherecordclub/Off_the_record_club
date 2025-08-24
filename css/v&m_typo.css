@@ -1,0 +1,386 @@
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "pangramMedium";
+  src: url(/font/Pangram-Medium.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 기본 스타일 */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "pangramRegular", sans-serif;
+  display: grid;
+  align-items: center;
+  padding: 0;
+  font-size: 15px;
+  cursor: none;
+}
+
+/* 스크롤바 최소화 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* 기본 커서 스타일 */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+body:hover .custom-cursor {
+  background-color: rgb(0, 34, 255);
+  border-color: white;
+  width: 30px;
+  height: 30px;
+}
+
+body:not(:has(.back-button:hover, header h1 a:hover, .tags a:hover))
+  .custom-cursor {
+  background-color: black; /* 다시 원래 색 */
+  width: 20px;
+  height: 20px;
+}
+
+.back-button,
+header h1 a,
+.tags a {
+  cursor: none; /* 기본 커서를 숨김 */
+}
+
+header {
+  height: 100px;
+  display: flex;
+  position: relative;
+  text-align: center;
+  margin: 64px 200px 0px 200px;
+  justify-content: center;
+}
+
+.back-button {
+  position: absolute;
+  left: 0px;
+  text-decoration: none;
+  color: #929292;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+header h1 a {
+  font-family: "pangramRegular";
+  text-decoration: none;
+  color: black;
+}
+
+/* 포트폴리오 섹션 */
+.content {
+  display: flex;
+  padding: 12px 0px 36px;
+  border-top: 1px solid black;
+  margin: 28px 200px;
+  border-bottom: 1px solid black;
+  padding-bottom: 12px;
+}
+
+.image-container {
+  display: grid;
+  width: calc(100% - 680px); /* 전체 너비에서 .text의 최대 너비를 제외 */
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center;
+}
+
+.image-container img {
+  width: 400px;
+  height: auto;
+}
+
+h2 {
+  font-family: "pangramBold";
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.text {
+  max-width: 680px;
+  border-top: 1px solid black;
+  font-size: 15px;
+  position: relative;
+}
+
+.text p {
+  border-bottom: 1px solid black; /* 줄바꿈마다 하단 선 추가 */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center; /* 세로축 중앙 정렬 */
+  position: relative;
+}
+
+.text span {
+  position: absolute;
+  text-align: left;
+  margin-left: 120px;
+}
+
+.text strong {
+  color: #929292;
+  font-size: 12px;
+  font-family: "pangramBold";
+  flex-shrink: 0; /* strong의 크기를 고정 */
+}
+
+.explain {
+  padding-left: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  margin-top: 30px;
+}
+
+.explain p,
+.text p:last-child {
+  border-bottom: none;
+  margin-bottom: -10px;
+}
+
+.explain ol {
+  line-height: 20px;
+  margin-top: 5px;
+}
+
+.description {
+  font-family: "SUIT-Regular";
+  font-size: 14px;
+  line-height: 24px;
+  flex-wrap: wrap;
+}
+
+h6 {
+  text-align: left;
+  font-size: 14px;
+}
+
+.explain a {
+  text-decoration: none;
+  color: black;
+}
+
+h6 :hover {
+  color: #929292;
+}
+
+.tags a {
+  border: 1px solid #000;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-right: 5px;
+  font-family: "pangramRegular";
+  text-decoration: none;
+  color: black;
+}
+
+.tags a:hover {
+  border-color: #929292;
+  color: #929292;
+}
+
+.tags a:active {
+  background-color: #000;
+  border-color: #000;
+  color: white;
+}
+
+.image-container2 {
+  margin: 28px 200px;
+}
+
+.image1,
+.image2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image1 img,
+.image2 img {
+  width: 100%;
+  height: auto;
+  margin: 8px 0px;
+}
+
+.image2 img {
+  border: 1px solid #f0f0f0;
+}
+
+/* 기본 반응형 스타일 */
+@media screen and (max-width: 1500px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container {
+    width: calc(100% - 800px);
+    text-align: center;
+  }
+
+  .image-container img {
+    width: 400px; /* 이미지 크기를 적절히 조절 */
+  }
+
+  .text {
+    max-width: 100%;
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    padding: 0 60px; /* 좌우 여백 확보 */
+  }
+
+  .back-button {
+    position: absolute;
+    left: 20px; /* 버튼이 너무 붙지 않도록 여백 추가 */
+    font-size: 14px;
+  }
+
+  header h1 {
+    font-size: 14px; /* 화면 크기에 맞게 글씨 크기 조정 */
+    text-align: center;
+    flex: 1; /* 가변 너비로 설정하여 중앙 배치 */
+  }
+
+  .content,
+  .image-container2 {
+    margin: 100px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .image-container img {
+    max-width: 300px;
+  }
+
+  .text {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  h6 {
+    line-height: 24px;
+  }
+
+  h2 {
+    font-family: "pangramBold";
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    height: 60px;
+    position: relative;
+  }
+
+  .back-button {
+    position: absolute;
+    left: 0px;
+  }
+
+  .content,
+  .image-container2 {
+    margin: 24px;
+  }
+  .image-container img {
+    width: 50%;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .text p {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+  }
+
+  h2 {
+    font-family: "pangramBold";
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  h6 {
+    font-size: 12px;
+  }
+
+  .tags a {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .explain,
+  .description {
+    font-size: 12px;
+  }
+}

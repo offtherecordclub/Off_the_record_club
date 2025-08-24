@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/otr.svg" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/poster.css" />
+    <title>Offtherecordclub - Poster</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/otr.html">OFF THE RECORD CLUB</a></h1>
+    </header>
+    <nav class="nav">
+      <a href="editorial.html">EDITORIAL</a>
+      <a href="graphic.html">GRAPHIC</a>
+      <span><a href="poster.html">POSTER</a></span>
+      <a href="typography.html">TYPOGRAPHY</a>
+      <a href="ux-ui.html">UX UI / WEB</a>
+    </nav>
+    <div class="custom-cursor"></div>
+    <script>
+      const cursor = document.querySelector(".custom-cursor");
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+      });
+    </script>
+    <div class="container">
+      <details>
+        <summary>
+          <p>The beatles</p>
+          <span class="tags">
+            <a href="graphic.html" class="tag">Graphic</a>
+            <a href="poster.html" class="tag">Poster</a>
+            <a href="typography.html" class="tag">Typo</a>
+          </span>
+          <span>2024</span>
+        </summary>
+        <div class="content1">
+          <div class="image-container">
+            <img id="slideImage1"
+              src="/beatles_img/beatles1.png"
+              alt="beatles"
+           />
+          </div>
+          <div class="text">
+            <div class="explain">
+             <p>최근 레트로가 인기를 끌면서 오래된 음악을 다시 듣는 사람들이 늘고 있습니다.</p>
+             <p>사람들의 기억 속 가장 큰 자리를 차지하고 있는 영국 록 밴드 비틀즈를 재해석한 포스터를 만들었습니다.</p>
+            </div>
+          <div class="view_more">
+           <p><a href="beatles.html">View more</a></p>
+          </div>
+          </div>
+        </div> 
+      </details>
+      <details>
+        <summary>
+          <p>Typography Experiment</p>
+          <span class="tags">
+            <a href="editorial.html" class="tag">Editorial</a>
+            <a href="graphic.html" class="tag">Graphic</a>
+            <a href="poster.html" class="tag">Poster</a>
+            <a href="typography.html" class="tag">Typo</a>
+          </span>
+          <span>2023</span>
+        </summary>
+        <div class="content2">
+          <div class="image-container">
+            <img id="slideImage2"
+              src="/typo_experi_img/typo_experi1.png"
+              alt="typography_experiment"
+            />
+          </div>
+          <div class="text">
+            <div class="explain">
+              <p>148*210mm</p>
+              <p>28p</p>
+              <br />
+             <ol>
+              <li>1. LOGO DESIGN</li>
+              <li>2. FONT DESIGN</li>
+              <li>3. POSTER DESIGN</li>
+              </ol>
+              <br />
+              <p> <span>
+              타이포그래피 2 수업에서 진행한 결과물들로 만든 포트폴리오
+              책입니다.<br />
+              3가지의 챕터로 구성되어 있으며, 각각의 과정을 담았습니다.
+              </p></span>
+             </div>
+            <div class="view_more">
+             <p><a href="typography_experiment.html">View more</a></p>
+            </div>
+          </div>
+        </div>  
+      </details>
+      <script src="js/poster.js"></script>  
+    </div>
+  </body>
+</html>
