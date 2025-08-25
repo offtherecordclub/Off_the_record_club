@@ -55,7 +55,6 @@ body {
   width: 20px;
   height: 20px;
   background-color: black;
-  border: 1px solid white;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
@@ -64,8 +63,7 @@ body {
 }
 
 body:hover .custom-cursor {
-  background-color: rgb(0, 34, 255);
-  border-color: white;
+  background-color: black;
   width: 30px;
   height: 30px;
 }
@@ -98,7 +96,6 @@ header {
   text-decoration: none;
   color: #929292;
   font-size: 14px;
-  cursor: pointer;
 }
 
 header h1 a {
@@ -131,7 +128,7 @@ header h1 a {
 
 h2 {
   font-family: "pangramBold";
-  font-size: 20px;
+  font-size: 15px;
   border-bottom: 1px solid black;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -148,13 +145,40 @@ h2 {
   position: relative;
 }
 
+/* 모든 p 태그에 대한 초기 설정 (깔끔하게 시작!) */
 .text p {
-  border-bottom: 1px solid black; /* 줄바꿈마다 하단 선 추가 */
-  margin-bottom: 20px;
-  padding-bottom: 20px;
   display: flex;
-  align-items: center; /* 세로축 중앙 정렬 */
-  position: relative;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-bottom: none; /* 기본적으로 모든 border-bottom 제거 */
+  padding-bottom: 0; /* 기본적으로 모든 padding-bottom 제거 */
+}
+
+.text p:not(:last-child) {
+  border-bottom: 1px solid black; /* 아래쪽 선 추가 */
+  padding-bottom: 20px; /* 선 아래 여백 추가 */
+}
+
+/* `.text span`에 적용되어 있던 `position: absolute` 문제를 해결해줄 부분 */
+/* `.desc`는 일반적인 문서 흐름에 맞게 위치해야 해. */
+.text p .desc {
+  position: static; /* <-- 얘가 핵심이야! absolute로부터 해방! */
+  display: block; /* 블록 요소로 만들어서 내용을 제대로 담고 높이를 인식하게 함 */
+  font-family: "SUIT-Regular";
+  font-size: 14px;
+  line-height: 24px;
+  justify-content: center;
+  height: auto;
+  margin-left: 4px;
+  margin-top: -3px;
+}
+
+.text strong {
+  width: 120px; /* Description 라벨 고정 너비 */
+  font-family: "pangramBold";
+  font-size: 12px;
+  color: #929292;
+  flex-shrink: 0;
 }
 
 .text span {
@@ -163,37 +187,13 @@ h2 {
   margin-left: 120px;
 }
 
-.text strong {
-  color: #929292;
-  font-size: 12px;
-  font-family: "pangramBold";
-  flex-shrink: 0; /* strong의 크기를 고정 */
-}
-
-.explain {
-  padding-left: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: auto;
-  margin-top: 30px;
-}
-
-.explain p,
-.text p:last-child {
-  border-bottom: none;
-  margin-bottom: -10px;
-}
-
-.explain ol {
+.desc ol {
   line-height: 20px;
   margin-top: 5px;
 }
 
-.description {
-  font-family: "SUIT-Regular";
-  font-size: 14px;
-  line-height: 24px;
+.tags {
+  margin-top: -2px;
 }
 
 .tags a {
@@ -205,6 +205,11 @@ h2 {
   font-family: "pangramRegular";
   text-decoration: none;
   color: black;
+}
+
+.tags a:hover {
+  border-color: #929292;
+  color: #929292;
 }
 
 .tags a:hover {
