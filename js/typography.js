@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const images1 = [
-  "/monster_img/monster.png",
-  "/monster_img/monster1.png",
-  "/monster_img/monster5.png",
-  "/monster_img/monster6.png",
+  "img/monster_img/monster.png",
+  "img/monster_img/monster1.png",
+  "img/monster_img/monster5.png",
+  "img/monster_img/monster6.png",
 ];
 let currentIndex1 = 0;
 
@@ -41,10 +41,10 @@ if (currentIndex1 === 0) {
 setInterval(changeImage1, 3000);
 
 const images2 = [
-  "/beatles_img/beatles1.png",
-  "/beatles_img/beatles2.png",
-  "/beatles_img/beatles3.png",
-  "/beatles_img/beatles4.png",
+  "img/beatles_img/beatles1.png",
+  "img/beatles_img/beatles2.png",
+  "img/beatles_img/beatles3.png",
+  "img/beatles_img/beatles4.png",
 ];
 let currentIndex2 = 0;
 
@@ -61,11 +61,11 @@ function changeImage2() {
 setInterval(changeImage2, 3000);
 
 const images3 = [
-  "/typo_experi_img/typo_experi1.png",
-  "/typo_experi_img/typo_experi2.png",
-  "/typo_experi_img/typo_experi3.png",
-  "/typo_experi_img/typo_experi4.png",
-  "/typo_experi_img/typo_experi5.png",
+  "img/typo_experi_img/typo_experi1.png",
+  "img/typo_experi_img/typo_experi2.png",
+  "img/typo_experi_img/typo_experi3.png",
+  "img/typo_experi_img/typo_experi4.png",
+  "img/typo_experi_img/typo_experi5.png",
 ];
 let currentIndex3 = 0;
 
@@ -81,10 +81,10 @@ function changeImage3() {
 setInterval(changeImage3, 3000);
 
 const images4 = [
-  "/v&m_typo_img/v&m_typo1.png",
-  "/v&m_typo_img/v&m_typo2.png",
-  "/v&m_typo_img/v&m_typo3.png",
-  "/v&m_typo_img/v&m_typo4.png",
+  "img/v&m_typo_img/v&m_typo1.png",
+  "img/v&m_typo_img/v&m_typo2.png",
+  "img/v&m_typo_img/v&m_typo3.png",
+  "img/v&m_typo_img/v&m_typo4.png",
 ];
 let currentIndex4 = 0;
 
@@ -98,4 +98,11 @@ function changeImage4() {
 }
 
 // 3초마다 첫 번째 슬라이드 변경
-setInterval(changeImage4, 3000);
+setInterval(changeImage4, 2000);
+
+const cursor = document.querySelector(".custom-cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});

@@ -12,10 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const images1 = [
-  "/beatles_img/beatles1.png",
-  "/beatles_img/beatles2.png",
-  "/beatles_img/beatles3.png",
-  "/beatles_img/beatles4.png",
+  "img/beatles_img/beatles1.png",
+  "img/beatles_img/beatles2.png",
+  "img/beatles_img/beatles3.png",
+  "img/beatles_img/beatles4.png",
 ];
 let currentIndex1 = 0;
 
@@ -32,11 +32,11 @@ function changeImage1() {
 setInterval(changeImage1, 3000);
 
 const images2 = [
-  "/typo_experi_img/typo_experi1.png",
-  "/typo_experi_img/typo_experi2.png",
-  "/typo_experi_img/typo_experi3.png",
-  "/typo_experi_img/typo_experi4.png",
-  "/typo_experi_img/typo_experi5.png",
+  "img/typo_experi_img/typo_experi1.png",
+  "img/typo_experi_img/typo_experi2.png",
+  "img/typo_experi_img/typo_experi3.png",
+  "img/typo_experi_img/typo_experi4.png",
+  "img/typo_experi_img/typo_experi5.png",
 ];
 let currentIndex2 = 0;
 
@@ -49,4 +49,11 @@ function changeImage2() {
   }, 500);
 }
 
-setInterval(changeImage2, 3000);
+setInterval(changeImage2, 2000);
+
+const cursor = document.querySelector(".custom-cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
