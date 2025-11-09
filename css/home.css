@@ -199,12 +199,14 @@ body:not(
    ✅ MAIN 전체 구조
 ------------------------------------- */
 main {
+  position: absolute;
+  bottom: 100px; /* 화면 아래에서 100px 위에 위치 */
+  left: 200px; /* 기존 좌우 마진을 left 기준으로 조정 */
+  right: 200px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin: 0 200px;
-  padding-top: 200px;
   line-height: 1.6;
   text-align: left;
 }
@@ -214,7 +216,7 @@ main {
 ------------------------------------- */
 .intro p {
   font-family: "pangramRegular";
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 8px;
 }
 
@@ -231,13 +233,13 @@ main {
   align-items: center;
   cursor: none;
   font-family: "pangramRegular";
-  font-size: 20px;
+  font-size: 24px;
   transition: opacity 0.3s ease;
 }
 
 .works-text {
   font-family: "pangramRegular";
-  font-size: 20px;
+  font-size: 24px;
   white-space: nowrap;
 }
 
