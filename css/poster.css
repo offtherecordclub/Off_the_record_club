@@ -281,7 +281,7 @@ summary::-webkit-details-marker {
 
 .content1 img,
 .content2 img,
-.content3 img {
+.content3 video {
   max-width: 300px;
   height: auto;
 }
@@ -611,7 +611,7 @@ summary::-webkit-details-marker {
 
   .content1 img,
   .content2 img,
-  .content3 img {
+  .content3 video {
     max-width: 60%; /* 부모 요소를 넘지 않도록 */
     height: auto;
     display: block;
