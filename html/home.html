@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/otr.svg" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <title>Off The Record Club</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <a href="/html/menu/work.html" class="menu">Work</a>
+        <a href="/html/menu/about.html" class="menu">About</a>
+        <a href="/html/menu/contact.html" class="menu">Contact</a>
+      </div>
+      <h1><a href="/html/home.html">OFF THE RECORD CLUB</a></h1>
+      <div class="menu-toggle">
+        <img src="/img/hamberger menu.svg" alt="햄버거" />
+      </div>
+    </header>
+
+    <!-- 햄버거 메뉴 오버레이 및 메뉴 내용 -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+      <div class="close-menu-btn">
+        <img src="/img/closed.svg" alt="닫기" />
+      </div>
+      <a href="/html/menu/work.html">Work</a>
+      <a href="/html/menu/about.html">About</a>
+      <a href="/html/menu/contact.html">Contact</a>
+    </div>
+
+    <div class="custom-cursor"></div>
+
+    <main>
+      <div class="intro">
+        <p>Off The Record Club designs</p>
+
+        <div class="categories">
+          <div class="category-row">
+            <div class="category" id="editorial"><span>Editorial,</span></div>
+            <div class="category" id="graphic"><span>Graphic,</span></div>
+            <div class="category" id="typography"><span>Typography,</span></div>
+            <div class="category" id="poster"><span>Poster,</span></div>
+            <div class="category" id="uxui"><span>UX/UI</span></div>
+            <span class="works-text">works.</span>
+          </div>
+        </div>
+
+        <!-- ✅ RECORD SHAPE -->
+        <div class="record-shape">
+          <img
+            class="record-static"
+            src="/img/home_img/record.png"
+            alt="Record Graphic"
+          />
+
+          <!-- ✅ PREVIEW OVERLAYS (record 위에 겹침) -->
+          <div class="preview" id="editorial-preview">
+            <img
+              src="/img/monster_img/record_monster.gif"
+              alt="Editorial Preview"
+              loading="lazy"
+            />
+            <div class="text"><span>Monster</span></div>
+          </div>
+
+          <div class="preview" id="graphic-preview">
+            <img
+              src="/img/v&m_graphic/record_v&m graphic.gif"
+              alt="Graphic Preview"
+              loading="lazy"
+            />
+            <div class="text"><span>Visual&Media Graphic</span></div>
+          </div>
+
+          <div class="preview" id="typography-preview">
+            <img
+              src="/img/v&m_typo_img/record_v&m typo.gif"
+              alt="Typography"
+              loading="lazy"
+            />
+            <div class="text"><span>Visual&Media Typography</span></div>
+          </div>
+
+          <div class="preview" id="poster-preview">
+            <img
+              src="/img/nota_img/record_notamarket.gif"
+              alt="Poster"
+              loading="lazy"
+            />
+            <div class="text"><span>Nota Market Poster Series</span></div>
+          </div>
+
+          <div class="preview" id="uxui-preview">
+            <img
+              src="/img/timeto_img/record_timeto.gif"
+              alt="UX/UI"
+              loading="lazy"
+            />
+            <div class="text"><span>Time To</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="/js/home.js"></script>
+  </body>
+</html>

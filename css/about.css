@@ -1,0 +1,383 @@
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+}
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+}
+@font-face {
+  font-family: "pangramMedium";
+  src: url(/font/Pangram-Medium.otf) format("woff");
+}
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "SUIT-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "pangramRegular", sans-serif;
+  font-size: 15px;
+  color: #000;
+  cursor: none;
+}
+
+/* Header */
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px 200px 40px 200px;
+  text-align: center;
+}
+.header-left {
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 32px;
+}
+
+.header-left a,
+header h1 a,
+.menu-toggle,
+.close-menu-btn {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  cursor: none;
+}
+
+header span a {
+  font-family: "pangramBold";
+}
+
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+body:hover .custom-cursor {
+  background-color: black;
+  width: 30px;
+  height: 30px;
+}
+
+body:not(
+    :has(
+        .experience li a:hover,
+        .header-left a:hover,
+        header h1 a:hover,
+        .mobile-menu a:hover,
+        .menu-toggle:hover,
+        .close-menu-btn:hover
+      )
+  )
+  .custom-cursor {
+  background-color: black; /* 다시 원래 색 */
+  width: 20px;
+  height: 20px;
+}
+
+/* About Section */
+.about {
+  margin: 0 200px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  margin-top: 60px;
+  padding-bottom: 100px;
+  align-items: start;
+  justify-content: start;
+  margin-bottom: 50px;
+}
+
+.intro {
+  border-top: 1px solid #000;
+  padding-top: 24px;
+  margin-bottom: 50px;
+  font-family: "SUIT-Regular";
+  font-size: 16px;
+  line-height: 36px;
+}
+
+.intro p strong {
+  font-family: "pangramRegular";
+}
+
+.intro-en {
+  font-family: "pangramRegular", sans-serif;
+  font-size: 16px;
+  color: black;
+  line-height: 32px;
+}
+
+h2 {
+  font-family: "pangramRegular", sans-serif;
+  font-size: 14px;
+  margin-bottom: 32px;
+  border-top: 1px solid #000;
+  padding-top: 60px;
+  text-decoration: underline; /* 텍스트 밑줄만 */
+  text-underline-offset: 4px; /* 글자와 밑줄 간격 */
+  text-decoration-thickness: 0.5px; /* 밑줄 두께 */
+}
+
+.profile p {
+  margin-bottom: 60px;
+  font-family: "SUIT-Regular", sans-serif;
+  line-height: 28px;
+  font-size: 16px;
+}
+
+.profile p strong {
+  font-family: "SUIT-Bold";
+}
+
+/* Experience */
+.experience ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+}
+.experience li {
+  margin-bottom: 24px;
+  font-family: "SUIT-Regular", sans-serif;
+}
+.experience span {
+  display: inline-block;
+  width: 140px;
+  font-family: "SUIT-Regular", sans-serif;
+}
+.experience li a {
+  text-decoration: none;
+  color: #404040;
+  font-style: "SUIT-Regular";
+  font-size: 14px;
+  cursor: none;
+  margin-left: 140px;
+  display: inline-block; /* or block */
+  margin-top: 16px; /* 원하는 만큼 조정 */
+}
+
+.experience li a:hover {
+  color: #929292;
+}
+
+.menu-toggle {
+  display: none;
+  width: 28px; /* 햄버거 아이콘 크기 고정 */
+  height: 28px;
+}
+
+/* 모바일 메뉴 오버레이 (초기엔 숨김) */
+.mobile-menu-overlay {
+  display: none; /* 기본 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white; /* 사용자 요청: 흰색 바탕 */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* 모바일 메뉴 본문 (초기엔 숨김) */
+.mobile-menu {
+  display: none; /* 기본 숨김 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999; /* 오버레이보다 위 */
+  flex-direction: column; /* 세로 정렬 */
+  justify-content: center;
+  align-items: center;
+  gap: 28px; /* 메뉴 항목 간 간격 */
+  font-size: 16px; /* 메뉴 글자 크기 키움 */
+  font-family: "pangramBold";
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.mobile-menu a {
+  color: black;
+  text-decoration: none;
+  cursor: none; /* 커스텀 커서 */
+}
+
+/* X 버튼 스타일 추가 */
+.close-menu-btn {
+  position: absolute; /* 모바일 메뉴 기준으로 절대 위치 */
+  top: 0;
+  left: 0;
+  cursor: none; /* 커스텀 커서 적용 */
+  z-index: 10001; /* 햄버거 메뉴보다도 위에 위치 */
+  padding: 4px; /* 클릭 영역 넓게 */
+}
+
+.close-menu-btn img {
+  width: 28px; /* X 아이콘 크기 */
+  height: 28px;
+  display: block; /* 이미지 정렬용 */
+}
+
+/* 모바일 메뉴 활성화 시 */
+.mobile-menu-overlay.active,
+.mobile-menu.active {
+  display: flex; /* Flexbox로 전환하여 내용 중앙 정렬 */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------------------------------------------------- */
+/* 미디어 쿼리 시작! (반응형 조절) */
+/* ---------------------------------------------------- */
+
+/* 1500px 미만 */
+@media (max-width: 1500px) {
+  header {
+    margin: 20px 100px 40px 100px; /* 좌우 마진 감소 */
+  }
+  .about {
+    margin: 56px 100px 20px 100px; /* 좌우 마진 감소 */
+  }
+}
+
+/* 1024px 미만 (태블릿, 햄버거 메뉴 시작) */
+@media (max-width: 1024px) {
+  header {
+    margin: 20px 50px 40px 50px; /* 헤더 마진 더 감소 */
+    justify-content: space-between; /* 양쪽 끝 정렬 */
+  }
+
+  .header-left {
+    display: none; /* 헤더 왼쪽 메뉴 숨김 */
+  }
+
+  h1 {
+    position: absolute; /* 중앙 정렬 유지 */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .menu-toggle {
+    display: block; /* 햄버거 버튼 보이기 */
+    margin-top: 12px;
+  }
+
+  .mobile-menu-overlay {
+    display: none; /* 이 미디어 쿼리부터 활성화 가능성 열어둠 */
+  }
+  .mobile-menu {
+    display: none; /* 이 미디어 쿼리부터 활성화 가능성 열어둠 */
+  }
+
+  .close-menu-btn {
+    display: block; /* 1024px 이하에서만 보이도록 */
+    z-index: 10002; /* 햄버거 메뉴와 겹치지 않게 더 높게 */
+    top: 55px;
+    left: 48px;
+  }
+  .about {
+    margin: 56px 50px 20px 50px; /* 컨테이너 마진 감소 */
+  }
+}
+
+/* 768px 미만 (작은 태블릿, 큰 모바일) */
+@media (max-width: 768px) {
+  header {
+    margin: 15px 30px 30px 30px; /* 마진 더 감소 */
+    height: 80px; /* 헤더 높이 조정 */
+  }
+
+  .menu-toggle {
+    margin-top: 12px;
+  }
+
+  .close-menu-btn {
+    top: 42px;
+    left: 26px;
+  }
+
+  h1 a {
+    font-size: 20px; /* 제목 크기 조정 */
+  }
+  .about {
+    margin: 30px 30px 15px 30px; /* 컨테이너 마진 더 감소 */
+  }
+}
+
+/* 600px 미만 (일반 모바일) */
+@media (max-width: 600px) {
+  header {
+    margin: 10px 20px 20px 20px; /* 마진 최소화 */
+    height: 70px;
+  }
+  h1 a {
+    font-size: 18px;
+  }
+
+  .close-menu-btn {
+    top: 32px;
+    left: 16px;
+  }
+
+  .mobile-menu {
+    gap: 20px;
+    font-size: 14px;
+  }
+
+  .about {
+    margin: 20px 20px 10px 20px;
+  }
+
+  .intro {
+    font-size: 13px;
+    line-height: 28px;
+  }
+
+  .intro-en {
+    font-size: 13px;
+    line-height: 24px;
+  }
+
+  .experience span {
+    width: 120px;
+  }
+  .profile p,
+  .experience li {
+    font-size: 13.5px;
+  }
+
+  .experience li a {
+    font-size: 12px;
+    margin-top: 12px; /* 원하는 만큼 조정 */
+    margin-left: 120px;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}

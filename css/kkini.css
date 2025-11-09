@@ -1,0 +1,464 @@
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "pangramMedium";
+  src: url(/font/Pangram-Medium.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 기본 스타일 */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "pangramRegular", sans-serif;
+  display: grid;
+  align-items: center;
+  padding: 0;
+  font-size: 15px;
+  cursor: none;
+}
+
+/* 스크롤바 최소화 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* 기본 커서 스타일 */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+body:hover .custom-cursor {
+  background-color: black;
+  width: 30px;
+  height: 30px;
+}
+
+body:not(
+    :has(
+        .back-button:hover,
+        header h1 a:hover,
+        .tags a:hover,
+        .image1 video:hover,
+        .play-button:hover
+      )
+  )
+  .custom-cursor {
+  background-color: black; /* 다시 원래 색 */
+  width: 20px;
+  height: 20px;
+}
+
+.back-button,
+header h1 a,
+.tags a,
+.image1 video {
+  cursor: none; /* 기본 커서를 숨김 */
+}
+
+.play-button::before,
+.play-button::after {
+  cursor: none !important;
+}
+
+header {
+  height: 100px;
+  display: flex;
+  position: relative;
+  text-align: center;
+  margin: 64px 200px 0px 200px;
+  justify-content: center;
+}
+
+.back-button {
+  position: absolute;
+  left: 0px;
+  text-decoration: none;
+  color: #929292;
+  font-size: 14px;
+}
+
+header h1 a {
+  font-family: "pangramRegular";
+  text-decoration: none;
+  color: black;
+}
+
+/* 포트폴리오 섹션 */
+.content {
+  display: flex;
+  padding: 12px 0px 36px;
+  border-top: 1px solid black;
+  margin: 28px 200px;
+  border-bottom: 1px solid black;
+  padding-bottom: 12px;
+}
+
+.image-container {
+  display: grid;
+  width: calc(100% - 680px); /* 전체 너비에서 .text의 최대 너비를 제외 */
+  justify-content: left; /* 가운데 정렬 */
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 600px;
+}
+
+h2 {
+  font-family: "pangramBold";
+  font-size: 15px;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.text {
+  max-width: 680px;
+  border-top: 1px solid black;
+  font-size: 15px;
+  position: relative;
+}
+
+/* 모든 p 태그에 대한 초기 설정 (깔끔하게 시작!) */
+.text p {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-bottom: none; /* 기본적으로 모든 border-bottom 제거 */
+  padding-bottom: 0; /* 기본적으로 모든 padding-bottom 제거 */
+}
+
+.text p:not(:last-child) {
+  border-bottom: 1px solid black; /* 아래쪽 선 추가 */
+  padding-bottom: 20px; /* 선 아래 여백 추가 */
+}
+
+/* `.text span`에 적용되어 있던 `position: absolute` 문제를 해결해줄 부분 */
+/* `.desc`는 일반적인 문서 흐름에 맞게 위치해야 해. */
+.text p .desc {
+  position: static; /* <-- 얘가 핵심이야! absolute로부터 해방! */
+  display: block; /* 블록 요소로 만들어서 내용을 제대로 담고 높이를 인식하게 함 */
+  font-family: "SUIT-Regular";
+  font-size: 14px;
+  line-height: 24px;
+  justify-content: center;
+  height: auto;
+  margin-left: 4px;
+  margin-top: -3px;
+}
+
+.text strong {
+  width: 120px; /* Description 라벨 고정 너비 */
+  font-family: "pangramBold";
+  font-size: 12px;
+  color: #929292;
+  flex-shrink: 0;
+}
+
+.text span {
+  position: absolute;
+  text-align: left;
+  margin-left: 120px;
+}
+
+.tags {
+  margin-top: -2px;
+}
+
+.tags a {
+  border: 1px solid #000;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  margin-right: 5px;
+  font-family: "pangramRegular";
+  text-decoration: none;
+  color: black;
+}
+
+.tags a:hover {
+  border-color: #929292;
+  color: #929292;
+}
+
+.tags a:hover {
+  border-color: #929292;
+  color: #929292;
+}
+
+.tags a:active {
+  background-color: #000;
+  border-color: #000;
+  color: white;
+}
+
+.image-container1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 28px 200px; /* ✅ content와 동일한 좌우 여백 */
+  padding-top: 36px;
+}
+
+.image1 video {
+  width: 100%;
+  height: auto;
+}
+
+.image1,
+.image2 {
+  width: 100%; /* ✅ 부모(image-container1) 기준으로 꽉 차게 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image2 img {
+  width: 100%; /* ✅ content 폭에 맞춤 */
+  max-width: 100%;
+  height: auto;
+  margin: 8px 0px;
+  object-fit: contain;
+}
+
+/* 기본 반응형 스타일 */
+@media screen and (max-width: 1700px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container {
+    width: calc(100% - 800px);
+    justify-content: center; /* 가운데 정렬 */
+    align-items: center;
+  }
+
+  .image-container img {
+    width: 600px; /* 이미지 크기를 적절히 조절 */
+  }
+
+  .text {
+    max-width: 100%;
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 60px; /* 좌우 여백 확보 */
+    margin: 0 100px;
+  }
+
+  .back-button {
+    position: absolute;
+    left: 20px; /* 버튼이 너무 붙지 않도록 여백 추가 */
+    font-size: 14px;
+  }
+
+  header h1 {
+    font-size: 14px; /* 화면 크기에 맞게 글씨 크기 조정 */
+    text-align: center;
+    flex: 1; /* 가변 너비로 설정하여 중앙 배치 */
+  }
+
+  .content {
+    margin: 0 100px;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .image-container img {
+    max-width: 400px;
+  }
+
+  .text {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .text span {
+    position: static; /* 🔥 absolute 없애기 */
+    margin-left: 120px; /* strong 라벨 오른쪽 여백 */
+    display: block; /* 줄바꿈과 높이 계산이 자연스럽게 되게 */
+    line-height: 24px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  h6 {
+    line-height: 24px;
+  }
+
+  h2 {
+    font-family: "pangramBold";
+    font-size: 16px;
+  }
+
+  .explain {
+    padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    height: 60px;
+    margin: 24px;
+  }
+
+  .back-button {
+    left: 4px;
+  }
+
+  .content,
+  .image-container2 {
+    margin: 24px;
+  }
+
+  .image-container img {
+    max-width: 300px;
+  }
+
+  .image-container1 {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: calc(
+      100% - 48px
+    ); /* ✅ 좌우 margin(24px씩)을 제외한 정확한 폭 계산 */
+    margin: 0 24px; /* 기존 여백 유지 */
+  }
+
+  .image2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .image2 img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 2 auto; /* 중앙 정렬 확실히 */
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .text p {
+    display: flex; /* 기본적으로 strong과 span을 한 줄 정렬 */
+    align-items: baseline;
+    margin-bottom: 28px; /* 기존과 동일 */
+    padding-bottom: 28px; /* 기존과 동일 */
+    border-bottom: 1px solid black; /* 기본 라인 */
+  }
+
+  /* 마지막 p 태그 (Description 부분)의 라인 제거 */
+  .text p:last-child {
+    border-bottom: none;
+    display: block; /* Description 줄은 flex 해제 */
+  }
+
+  /* ⭐️⭐️ strong 태그의 핵심 변화! ⭐️⭐️ */
+  .text p strong {
+    display: block; /* strong을 블록 요소로 만들어서 자기 혼자 한 줄 차지 */
+    width: auto; /* 너비 자동 설정 (120px 고정 안 함) */
+    font-family: "pangramBold"; /* 기존 스타일 유지 */
+    font-size: 12px; /* 기존 스타일 유지 */
+    color: #929292; /* 기존 스타일 유지 */
+    margin-left: 0; /* 혹시 모를 외부 마진 초기화 */
+    padding-left: 0; /* 혹시 모를 외부 패딩 초기화 */
+    flex-shrink: 0; /* 기존 스타일 유지 */
+  }
+
+  .text span {
+    position: absolute; /* 이대로 유지 */
+    text-align: left; /* 이대로 유지 */
+    margin-left: 120px; /* 이대로 유지 */
+    margin-top: -8px;
+  }
+
+  .tags {
+    margin-top: -8px;
+  }
+
+  .text p .desc {
+    position: static !important; /* 🚨🚨 얘가 진짜 핵심! `.text span`의 absolute를 무조건 덮어쓰기! */
+    display: block; /* 블록 요소로 만들어서 strong 밑 새 줄에서 시작 */
+    font-family: "SUIT-Regular"; /* 기존 스타일 유지 */
+    font-size: 12px;
+    line-height: 24px; /* 기존 스타일 유지 */
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    text-indent: 0 !important; /* text-indent도 강력 초기화 */
+    margin-top: 20px;
+  }
+
+  .desc ol {
+    line-height: 20px;
+    margin-top: 5px;
+  }
+  .custom-cursor {
+    display: none;
+  }
+}
