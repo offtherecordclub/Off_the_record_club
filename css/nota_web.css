@@ -251,11 +251,6 @@ h2 {
   padding-top: 36px;
 }
 
-.image1 video {
-  width: 100%;
-  height: auto;
-}
-
 .image1,
 .image2 {
   width: 100%; /* ✅ 부모(image-container1) 기준으로 꽉 차게 */
@@ -270,6 +265,7 @@ h2 {
   height: auto;
   margin: 8px 0px;
   object-fit: contain;
+  border: 1px solid #dadada; /* 선 색상, 두께 조절 */
 }
 
 /* 기본 반응형 스타일 */
@@ -374,6 +370,10 @@ h2 {
     margin: 24px;
   }
 
+  .back-button {
+    left: 4px;
+  }
+
   .content,
   .image-container2 {
     margin: 24px;
@@ -394,76 +394,18 @@ h2 {
     margin: 0 24px; /* 기존 여백 유지 */
   }
 
-  .image1 {
+  .image2 {
     width: 100%;
     display: flex;
     justify-content: center;
   }
 
-  .image1 img {
+  .image2 img {
     display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
     margin: 2 auto; /* 중앙 정렬 확실히 */
-  }
-
-  .text {
-    font-size: 14px;
-  }
-
-  .text p {
-    margin-bottom: 28px;
-    padding-bottom: 28px;
-  }
-
-  h2 {
-    font-family: "pangramBold";
-    font-size: 14px;
-    margin-bottom: 28px;
-  }
-
-  h6 {
-    font-size: 12px;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-  }
-
-  .tags a {
-    font-size: 10px;
-    padding: 3px 8px;
-  }
-
-  .explain,
-  .description {
-    font-size: 12px;
-  }
-  .custom-cursor {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  header {
-    height: 60px;
-    margin: 24px;
-  }
-
-  .back-button {
-    left: 4px;
-  }
-
-  .content,
-  .image-container2 {
-    margin: 24px;
-  }
-
-  .image-container img {
-    max-width: 300px;
   }
 
   .text {
