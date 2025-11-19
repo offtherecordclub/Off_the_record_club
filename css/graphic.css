@@ -255,7 +255,8 @@ summary::-webkit-details-marker {
 .content6,
 .content7,
 .content8,
-.content9 {
+.content9,
+.content10 {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -283,7 +284,8 @@ summary::-webkit-details-marker {
 .content6 .image-container,
 .content7 .image-container,
 .content8 .image-container,
-.content9 .image-container {
+.content9 .image-container,
+.content10 .image-container {
   border-right: 1px solid black; /* 중간 선 */
   padding: 40px;
   width: 770px; /* 원하는 고정된 너비 */
@@ -317,6 +319,11 @@ summary::-webkit-details-marker {
 .content7 img,
 .content9 img {
   max-width: 300px;
+  height: auto;
+}
+
+.content10 img {
+  max-width: 800px;
   height: auto;
 }
 
@@ -458,7 +465,8 @@ summary::-webkit-details-marker {
   .content6,
   .content7,
   .content8,
-  .content9 {
+  .content9,
+  .content10 {
     flex-direction: column; /* 세로 정렬 */
     display: flex;
   }
@@ -471,7 +479,8 @@ summary::-webkit-details-marker {
   .content6 .image-container,
   .content7 .image-container,
   .content8 .image-container,
-  .content9 .image-container {
+  .content9 .image-container,
+  .content10 .image-container {
     min-width: 500px;
     width: auto; /* 이미지 컨테이너 너비를 부모 요소에 맞춤 */
     border-right: none; /* 기존 border 제거 */
@@ -536,7 +545,8 @@ summary::-webkit-details-marker {
   .content6,
   .content7,
   .content8,
-  .content9 {
+  .content9,
+  .content10 {
     flex-direction: column; /* 세로 정렬 */
     display: flex;
   }
@@ -600,7 +610,8 @@ summary::-webkit-details-marker {
   .content6,
   .content7,
   .content8,
-  .content9 {
+  .content9,
+  .content10 {
     width: 100%;
     flex-direction: column; /* 세로 정렬 */
     display: flex;
@@ -667,7 +678,8 @@ summary::-webkit-details-marker {
   .content6,
   .content7,
   .content8,
-  .content9 {
+  .content9,
+  .content10 {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -696,7 +708,8 @@ summary::-webkit-details-marker {
   .content6 img,
   .content7 img,
   .content8 img,
-  .content9 img {
+  .content9 img,
+  .content10 img {
     max-width: 60%; /* 부모 요소를 넘지 않도록 */
     height: auto;
     display: block;
