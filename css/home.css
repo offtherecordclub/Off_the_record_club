@@ -323,8 +323,8 @@ body.dark .category:hover {
   }
 
   main {
-    left: 120px;
-    right: 120px;
+    left: 100px;
+    right: 100px;
   }
 
   .intro p,
@@ -378,8 +378,10 @@ body.dark .category:hover {
 
   /* main을 일반 레이아웃으로 변경해서 겹침 방지 */
   main {
-    position: static;
-    margin: 0 60px 80px 60px;
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+    right: 50px;
   }
 
   .intro p,
@@ -419,7 +421,11 @@ body.dark .category:hover {
   }
 
   main {
-    margin: 0 30px 60px 30px;
+    position: absolute;
+    bottom: 100px; /* 화면 아래에서 100px 위 */
+    left: 30px; /* 좌우 여백 30px */
+    right: 30px;
+    margin: 0; /* margin 제거 */
   }
 
   .intro p,
@@ -474,7 +480,9 @@ body.dark .category:hover {
   }
 
   main {
-    margin: 0 20px 40px 20px;
+    bottom: 100px;
+    left: 20px;
+    right: 20px;
   }
 
   .intro p,
@@ -498,7 +506,29 @@ body.dark .category:hover {
     bottom: 14px;
   }
 
-  /* 작은 화면에서는 커스텀 커서 숨김 */
+  .preview {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    border-radius: inherit;
+  }
+
+  .preview.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ✅ JS가 안 돌아가더라도, 첫 번째(Monster)는 기본으로 보이게 */
+  .preview:first-of-type {
+    opacity: 1;
+  }
+
+  .record-static {
+    display: none;
+  }
+
   .custom-cursor {
     display: none;
   }
