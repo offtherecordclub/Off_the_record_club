@@ -312,3 +312,194 @@ body.dark .category:hover {
   font-size: 18px;
   line-height: 1.4;
 }
+
+/* ================================
+   💻 1500px 이하
+   - 좌우 마진 줄이고, 레코드/텍스트 조금 컴팩트하게
+================================ */
+@media (max-width: 1500px) {
+  header {
+    margin: 20px 100px 40px 100px; /* 좌우 마진 감소 */
+  }
+
+  main {
+    left: 120px;
+    right: 120px;
+  }
+
+  .intro p,
+  .category,
+  .works-text {
+    font-size: 22px;
+  }
+
+  .preview .text {
+    font-size: 16px;
+    left: 20px;
+    bottom: 18px;
+  }
+}
+
+/* ================================
+   📱 1024px 이하 (태블릿 가로/세로)
+   - 헤더 좌우 마진 더 줄이기
+   - 왼쪽 메뉴 숨기고 햄버거 메뉴 등장
+   - main 절대 위치 → 일반 흐름으로 변경
+================================ */
+@media (max-width: 1024px) {
+  header {
+    margin: 20px 50px 40px 50px; /* 헤더 마진 더 감소 */
+    justify-content: space-between; /* 양쪽 끝 정렬 */
+  }
+  .header-left {
+    display: none; /* 헤더 왼쪽 메뉴 숨김 */
+  }
+  h1 {
+    position: absolute; /* 중앙 정렬 유지 */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .menu-toggle {
+    display: block; /* 햄버거 버튼 보이기 */
+    margin-top: 12px;
+  }
+  .mobile-menu-overlay {
+    display: none; /* 이 미디어 쿼리부터 활성화 가능성 열어둠 */
+  }
+  .mobile-menu {
+    display: none; /* 이 미디어 쿼리부터 활성화 가능성 열어둠 */
+  }
+  .close-menu-btn {
+    display: block; /* 1024px 이하에서만 보이도록 */
+    z-index: 10002; /* 햄버거 메뉴와 겹치지 않게 더 높게 */
+    top: 55px;
+    left: 48px;
+  }
+
+  /* main을 일반 레이아웃으로 변경해서 겹침 방지 */
+  main {
+    position: static;
+    margin: 0 60px 80px 60px;
+  }
+
+  .intro p,
+  .category,
+  .works-text {
+    font-size: 20px;
+  }
+
+  .record-shape {
+    margin-top: 24px;
+  }
+
+  /* 모바일 메뉴의 X 버튼 위치 조정 */
+  .close-menu-btn {
+    top: 24px;
+    left: 24px;
+  }
+}
+
+/* ================================
+   📱 768px 이하 (태블릿 / 작은 랩탑)
+================================ */
+@media (max-width: 768px) {
+  header {
+    margin: 15px 30px 30px 30px; /* 마진 더 감소 */
+    height: 80px; /* 헤더 높이 조정 */
+  }
+  .menu-toggle {
+    margin-top: 12px;
+  }
+  .close-menu-btn {
+    top: 42px;
+    left: 26px;
+  }
+  h1 a {
+    font-size: 20px; /* 제목 크기 조정 */
+  }
+
+  main {
+    margin: 0 30px 60px 30px;
+  }
+
+  .intro p,
+  .category,
+  .works-text {
+    font-size: 18px;
+  }
+
+  .category-row {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+
+  .record-shape {
+    margin-top: 20px;
+  }
+
+  .preview .text {
+    font-size: 14px;
+    left: 18px;
+    bottom: 16px;
+  }
+}
+
+/* ================================
+   📱 600px 이하 (모바일)
+   - 폰트 더 축소
+   - 레코드 영역 여백 줄이기
+   - 커스텀 커서 숨기기
+================================ */
+@media (max-width: 600px) {
+  header {
+    margin: 10px 20px 20px 20px; /* 마진 최소화 */
+    height: 70px;
+  }
+
+  h1 a {
+    font-size: 14px;
+  }
+
+  .menu-toggle {
+    right: 20px;
+  }
+
+  .close-menu-btn {
+    top: 32px;
+    left: 16px;
+  }
+  .mobile-menu {
+    gap: 20px;
+    font-size: 14px;
+  }
+
+  main {
+    margin: 0 20px 40px 20px;
+  }
+
+  .intro p,
+  .category,
+  .works-text {
+    font-size: 16px;
+  }
+
+  .category-row {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .record-shape {
+    margin-top: 16px;
+  }
+
+  .preview .text {
+    font-size: 13px;
+    left: 14px;
+    bottom: 14px;
+  }
+
+  /* 작은 화면에서는 커스텀 커서 숨김 */
+  .custom-cursor {
+    display: none;
+  }
+}

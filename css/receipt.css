@@ -262,6 +262,7 @@ h2 {
   height: auto;
   margin: 8px 0px;
   object-fit: contain;
+  border: 1px solid #f0f0f0;
 }
 
 /* 기본 반응형 스타일 */
