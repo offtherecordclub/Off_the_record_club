@@ -458,7 +458,7 @@ body.dark .category:hover {
 ================================ */
 @media (max-width: 600px) {
   header {
-    margin: 10px 20px 20px 20px; /* 마진 최소화 */
+    margin: 10px 20px 20px 20px;
     height: 70px;
   }
 
@@ -474,6 +474,7 @@ body.dark .category:hover {
     top: 32px;
     left: 16px;
   }
+
   .mobile-menu {
     gap: 20px;
     font-size: 14px;
@@ -506,6 +507,7 @@ body.dark .category:hover {
     bottom: 14px;
   }
 
+  /* 기본 구조 유지 */
   .preview {
     position: absolute;
     inset: 0;
@@ -520,15 +522,7 @@ body.dark .category:hover {
     pointer-events: auto;
   }
 
-  /* ✅ JS가 안 돌아가더라도, 첫 번째(Monster)는 기본으로 보이게 */
-  .preview:first-of-type {
-    opacity: 1;
-  }
-
-  .record-static {
-    display: none;
-  }
-
+  /* 모바일에서는 커스텀 커서 숨기기 */
   .custom-cursor {
     display: none;
   }

@@ -14,7 +14,7 @@ if (cursor) {
    ✅ DOMContentLoaded 이후 로직
 ------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  /* ---------- 공통으로 쓰는 요소들 ---------- */
+  /* ---------- 공통 요소 ---------- */
   const body = document.body;
   const categories = document.querySelectorAll(".category");
   const previews = document.querySelectorAll(".preview");
@@ -84,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* -------------------------------------
-     ✅ DESKTOP / TABLET (600px 초과) : HOVER 인터랙션
+     ✅ DESKTOP / TABLET (600px 초과)
+        : HOVER 시 프리뷰
   ------------------------------------- */
   function setupHoverPreview() {
     categories.forEach((cat) => {
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!preview) return;
 
       cat.addEventListener("mouseenter", () => {
-        // 모바일에서는 hover 동작 안 함
+        // 📱 모바일에서는 hover 동작 안 함
         if (window.innerWidth <= 600) return;
 
         body.classList.add("dark");
@@ -103,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
         preview.classList.add("active");
 
         if (recordStatic) {
-          recordStatic.style.opacity = "0";
+          recordStatic.style.opacity = "1"; // 밑에 깔려있어도 됨
         }
       });
 
@@ -127,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* -------------------------------------
-     ✅ CUSTOM CURSOR COLOR CHANGE ON PREVIEW
+     ✅ CUSTOM CURSOR 색상 변경 (프리뷰 위)
   ------------------------------------- */
   previews.forEach((preview) => {
     preview.addEventListener("mouseenter", () => {
@@ -140,28 +141,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ================================
-   📱 600px 이하일 때 자동 슬라이드
-   - Monster → Graphic → Typography → Poster → UX/UI
-================================ */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.innerWidth > 600) return; // 모바일에서만 동작
-
-    const previews = document.querySelectorAll(".preview");
+  /* -------------------------------------
+     ✅ MOBILE (600px 이하)
+        Monster → Graphic → Typography → Poster → UX/UI
+        자동 슬라이드
+  ------------------------------------- */
+  function setupMobileSlider() {
+    if (window.innerWidth > 600) return; // 모바일에서만
     if (!previews.length) return;
 
     let index = 0;
 
-    // 초기 상태: 전부 비활성화 후, 첫 번째(Monster)만 활성화
-    previews.forEach((p) => p.classList.remove("active"));
+    // 초기 상태: 전부 끄고 Monster만 켜기
+    clearPreviews();
     previews[0].classList.add("active");
 
+    // 2초마다 다음 프리뷰로 전환
     setInterval(() => {
       previews[index].classList.remove("active");
-      index = (index + 1) % previews.length;
+      index = (index + 1) % previews.length; // 0→1→2→3→4→0…
       previews[index].classList.add("active");
-    }, 2000); // 2초 간격 (원하면 3000, 4000으로 조정 가능)
-  });
+    }, 8000);
+  }
 
   /* -------------------------------------
      ✅ 초기 세팅 실행
