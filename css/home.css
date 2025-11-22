@@ -131,36 +131,39 @@ body:not(
 
 .menu-toggle {
   display: none;
-  width: 28px;
+  width: 28px; /* 햄버거 아이콘 크기 고정 */
   height: 28px;
 }
 
+/* 모바일 메뉴 오버레이 (초기엔 숨김) */
 .mobile-menu-overlay {
-  display: none;
+  display: none; /* 기본 숨김 */
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: white;
+  background-color: white; /* 사용자 요청: 흰색 바탕 */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  z-index: 9998; /* 추가: monster 이미지 위에 오도록 */
 }
 
+/* 모바일 메뉴 본문 (초기엔 숨김) */
 .mobile-menu {
-  display: none;
+  display: none; /* 기본 숨김 */
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
-  flex-direction: column;
+  z-index: 9999; /* 오버레이보다 위 */
+  flex-direction: column; /* 세로 정렬 */
   justify-content: center;
   align-items: center;
-  gap: 28px;
-  font-size: 16px;
+  gap: 28px; /* 메뉴 항목 간 간격 */
+  font-size: 16px; /* 메뉴 글자 크기 키움 */
   font-family: "pangramBold";
   opacity: 0;
   visibility: hidden;
@@ -170,27 +173,29 @@ body:not(
 .mobile-menu a {
   color: black;
   text-decoration: none;
-  cursor: none;
+  cursor: none; /* 커스텀 커서 */
 }
 
+/* X 버튼 스타일 추가 */
 .close-menu-btn {
-  position: absolute;
+  position: absolute; /* 모바일 메뉴 기준으로 절대 위치 */
   top: 0;
   left: 0;
-  cursor: none;
-  z-index: 10001;
-  padding: 4px;
+  cursor: none; /* 커스텀 커서 적용 */
+  z-index: 10001; /* 햄버거 메뉴보다도 위에 위치 */
+  padding: 4px; /* 클릭 영역 넓게 */
 }
 
 .close-menu-btn img {
-  width: 28px;
+  width: 28px; /* X 아이콘 크기 */
   height: 28px;
-  display: block;
+  display: block; /* 이미지 정렬용 */
 }
 
+/* 모바일 메뉴 활성화 시 */
 .mobile-menu-overlay.active,
 .mobile-menu.active {
-  display: flex;
+  display: flex; /* Flexbox로 전환하여 내용 중앙 정렬 */
   opacity: 1;
   visibility: visible;
 }
@@ -489,7 +494,7 @@ body.dark .category:hover {
   .intro p,
   .category,
   .works-text {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .category-row {
