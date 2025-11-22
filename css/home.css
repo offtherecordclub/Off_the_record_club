@@ -40,6 +40,7 @@ body {
   cursor: none;
   transition: background-color 0.5s ease, color 0.5s ease;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* -------------------------------------
@@ -486,7 +487,7 @@ body.dark .category:hover {
   }
 
   main {
-    bottom: 100px;
+    bottom: 80px;
     left: 20px;
     right: 20px;
   }
@@ -494,7 +495,7 @@ body.dark .category:hover {
   .intro p,
   .category,
   .works-text {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .category-row {
