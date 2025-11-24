@@ -85,9 +85,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------
      ✅ DESKTOP / TABLET (600px 초과)
-        : HOVER 시 프리뷰
+        : HOVER 시 프리뷰 + 클릭 시 페이지 이동
   ------------------------------------- */
   function setupHoverPreview() {
+    // 🔗 id → 실제 파일 이름 매핑
+    const pageMap = {
+      editorial: "editorial.html",
+      graphic: "graphic.html",
+      poster: "poster.html",
+      typography: "typography.html",
+      uxui: "ux-ui.html", // ⭐️ id: uxui → 파일: ux-ui.html
+    };
+
     categories.forEach((cat) => {
       const preview = document.getElementById(`${cat.id}-preview`);
       if (!preview) return;
@@ -120,9 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // 클릭 시 상세 페이지 이동
+      // ✅ 클릭 시 상세 페이지 이동 (매핑 사용)
       cat.addEventListener("click", () => {
-        window.location.href = `/html/nav/${cat.id}.html`;
+        const targetPage = pageMap[cat.id] || `${cat.id}.html`;
+        window.location.href = `/html/nav/${targetPage}`;
       });
     });
   }
@@ -152,11 +162,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let index = 0;
 
-    // 초기 상태: 전부 끄고 Monster만 켜기
+    // 초기 상태: 전부 끄고 첫 번째만 켜기
     clearPreviews();
     previews[0].classList.add("active");
 
-    // 2초마다 다음 프리뷰로 전환
+    // 8초마다 다음 프리뷰로 전환
     setInterval(() => {
       previews[index].classList.remove("active");
       index = (index + 1) % previews.length; // 0→1→2→3→4→0…
