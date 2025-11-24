@@ -164,7 +164,7 @@ h2 {
 }
 .experience span {
   display: inline-block;
-  width: 140px;
+  width: 160px;
   font-family: "SUIT-Regular", sans-serif;
 }
 .experience li a {
@@ -173,7 +173,7 @@ h2 {
   font-style: "SUIT-Regular";
   font-size: 14px;
   cursor: none;
-  margin-left: 140px;
+  margin-left: 160px;
   display: inline-block; /* or block */
   margin-top: 16px; /* 원하는 만큼 조정 */
 }
