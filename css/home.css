@@ -309,7 +309,7 @@ body.dark .category:hover {
   border-radius: inherit;
 }
 
-.preview .text {
+.preview .text span {
   position: absolute;
   bottom: 20px;
   left: 24px;
