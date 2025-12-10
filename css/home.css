@@ -449,7 +449,7 @@ body.dark .category:hover {
     margin-top: 20px;
   }
 
-  .preview .text {
+  .preview .text span {
     font-size: 14px;
     left: 18px;
     bottom: 16px;
@@ -507,7 +507,7 @@ body.dark .category:hover {
     margin-top: 16px;
   }
 
-  .preview .text {
+  .preview .text span {
     font-size: 13px;
     left: 14px;
     bottom: 14px;
