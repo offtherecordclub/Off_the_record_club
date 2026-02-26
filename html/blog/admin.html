@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/img/otr.svg" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+    <title>Off The Record Club - Admin</title>
+  </head>
+
+  <body>
+    <header>
+      <h1><a href="/html/home.html">OFF THE RECORD CLUB</a></h1>
+    </header>
+
+    <div class="post-container">
+      <!-- 제목 입력 -->
+      <input
+        type="text"
+        id="title"
+        class="title-input"
+        placeholder="제목을 입력하세요"
+      />
+
+      <!-- 날짜 & 이미지 업로드 -->
+      <div class="meta">
+        <span id="date"></span>
+
+        <label for="image-upload" class="upload-icon" title="이미지 추가">
+          <img src="/img/photo.svg" alt="사진 아이콘" />
+          <input
+            type="file"
+            id="image-upload"
+            accept="image/*"
+            style="display: none"
+          />
+        </label>
+      </div>
+
+      <hr />
+
+      <!-- 글+사진 편집 영역 -->
+      <div
+        id="editor"
+        class="editor"
+        contenteditable="true"
+        placeholder="내용을 입력하세요"
+      ></div>
+
+      <!-- 발행 버튼 -->
+      <button class="publish-btn" onclick="savePost()">저장</button>
+    </div>
+
+    <script src="/js/admin.js"></script>
+  </body>
+</html>

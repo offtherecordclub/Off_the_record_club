@@ -1,0 +1,166 @@
+/* 폰트 설정 */
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "pangramMedium";
+  src: url(/font/Pangram-Medium.otf) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SUIT-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* 전체 기본 */
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "pangramRegular", sans-serif;
+  font-size: 15px;
+  color: #000;
+  background-color: #fbfbfb;
+}
+
+/* Header */
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 20px 200px 40px 200px;
+  text-align: center;
+}
+header h1 a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+/* 카드 박스 */
+.post-container {
+  width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  padding: 60px;
+}
+
+/* 제목 */
+.title-input {
+  width: 100%;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  font-family: "SUIT-Medium";
+  outline: none;
+}
+.title-input::placeholder {
+  color: #c7c7c7;
+}
+
+/* meta 영역 */
+.meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  color: #888;
+  position: relative;
+}
+.upload-icon {
+  cursor: pointer;
+  user-select: none;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+.upload-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* HR */
+hr {
+  margin: 20px 0 40px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Editor (글+이미지) */
+.editor {
+  width: 100%;
+  min-height: 300px;
+  font-family: "SUIT-Regular";
+  font-size: 14px;
+  line-height: 140%;
+  outline: none;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+/* 삽입된 이미지 스타일 */
+.editor img {
+  max-width: 400px;
+  display: block;
+  margin: 8px 0;
+  border-radius: 10px;
+  position: relative;
+}
+
+/* editor 내부 이미지 삭제 버튼 */
+.editor .delete-btn {
+  position: absolute;
+  top: 12px; /* 이미지 안쪽 위쪽 */
+  right: 12px; /* 이미지 안쪽 오른쪽 */
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* 발행 버튼 */
+.publish-btn {
+  margin-top: 40px;
+  padding: 10px 20px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
