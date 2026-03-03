@@ -3,13 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <title>Post</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/post.css" />
   </head>
-  <body>
-    <h1 id="title"></h1>
-    <p id="date"></p>
-    <div id="content"></div>
 
-    <button onclick="deletePost()">삭제</button>
+  <body>
+    <header>
+      <h1><a href="/html/home.html">OFF THE RECORD CLUB</a></h1>
+    </header>
+
+    <div class="post-container">
+      <!-- 제목 -->
+      <input type="text" id="title" class="title-input" disabled />
+
+      <div class="meta">
+        <span id="date"></span>
+        <span id="moreBtn" class="more-btn">⋮</span>
+      </div>
+
+      <!-- 어두운 배경 -->
+      <div id="popupOverlay" class="popup-overlay hidden"></div>
+
+      <!-- 팝업 -->
+      <div id="menuPopup" class="menu-popup hidden">
+        <button id="deleteBtn">삭제</button>
+        <button id="cancelBtn">취소</button>
+      </div>
+
+      <hr />
+
+      <!-- 내용 -->
+      <div id="content" class="editor"></div>
+    </div>
+
+    <div class="post-nav">
+      <div id="prevPost" class="post-nav-item">이전 글</div>
+      <div id="nextPost" class="post-nav-item">다음 글</div>
+    </div>
 
     <script src="/js/post.js"></script>
   </body>

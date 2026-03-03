@@ -105,7 +105,6 @@ function savePost() {
   if (firstImg && firstImg.src) {
     thumb = firstImg.src;
     // ⭐ img만 지우지 말고 wrapper(div) 통째로 제거
-    firstImg.closest("div").remove();
   }
   const newPost = {
     id: Date.now(),

@@ -1,0 +1,197 @@
+/* 폰트 설정 */
+@font-face {
+  font-family: "pangramBold";
+  src: url(/font/Pangram-Bold.otf) format("woff");
+}
+@font-face {
+  font-family: "pangramRegular";
+  src: url(/font/Pangram-Regular.otf) format("woff");
+}
+@font-face {
+  font-family: "pangramMedium";
+  src: url(/font/Pangram-Medium.otf) format("woff");
+}
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+}
+@font-face {
+  font-family: "SUIT-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+}
+
+/* 전체 기본 */
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "pangramRegular", sans-serif;
+  font-size: 15px;
+  color: #000;
+  background-color: #fbfbfb;
+}
+
+/* Header */
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 200px 40px 200px;
+  text-align: center;
+}
+header h1 a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+
+/* 카드 박스 */
+.post-container {
+  width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 10px;
+  padding: 60px;
+}
+
+/* 제목 */
+.title-input {
+  width: 100%;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  font-family: "SUIT-Bold";
+  outline: none;
+  background: white;
+  cursor: default;
+}
+
+/* meta */
+.meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  color: #888;
+  font-size: 13px;
+  position: relative;
+}
+
+/* 점 3개 */
+.more-btn {
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+/* HR */
+hr {
+  margin: 20px 0 40px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* 본문 */
+.editor {
+  width: 100%;
+  font-family: "SUIT-Regular";
+  font-size: 14px;
+  line-height: 140%;
+  padding: 10px;
+}
+
+/* 이미지 */
+.editor img {
+  max-width: 400px;
+  display: block;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+
+/* 숨김 */
+.hidden {
+  display: none !important;
+}
+
+/* 어두운 배경 */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* 팝업 박스 */
+.menu-popup {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 20px;
+  padding: 40px 60px;
+  z-index: 1001;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.menu-popup button {
+  display: block;
+  width: 120px;
+  margin: 15px auto;
+  padding: 12px 0;
+  font-size: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* post 페이지에서는 이미지 삭제 버튼 숨기기 */
+.editor .delete-btn {
+  display: none !important;
+}
+
+.post-nav {
+  width: 1040px;
+  margin: 40px auto 0; /* ← 가운데 정렬 */
+  margin-bottom: 40px;
+  background: white;
+  border-radius: 10px;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7e7e7e;
+  font-size: 14px;
+}
+
+.post-nav-item {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.post-nav-item:hover {
+  color: #000;
+}
+
+.post-nav-item.disabled {
+  color: #ddd;
+  cursor: default;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .post-container {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .editor img {
+    max-width: 100%;
+  }
+}

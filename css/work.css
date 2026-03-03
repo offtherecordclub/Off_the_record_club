@@ -89,14 +89,15 @@ body:hover .custom-cursor {
 
 body:not(
     :has(
-        a.item:hover,
-        .nav a:hover,
-        .header-left a:hover,
-        a.item img:hover,
-        .mobile-menu a:hover,
-        .menu-toggle:hover,
-        .close-menu-btn:hover
-      )
+      a.item:hover,
+      .nav a:hover,
+      .header-left a:hover,
+      header h1 a:hover,
+      a.item img:hover,
+      .mobile-menu a:hover,
+      .menu-toggle:hover,
+      .close-menu-btn:hover
+    )
   )
   .custom-cursor {
   background-color: black; /* 다시 원래 색 */
@@ -221,7 +222,9 @@ a.item .info p {
   background-color: white; /* 사용자 요청: 흰색 바탕 */
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
 }
 
 /* 모바일 메뉴 본문 (초기엔 숨김) */
@@ -241,7 +244,9 @@ a.item .info p {
   font-family: "pangramBold";
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
 }
 
 .mobile-menu a {
