@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 화면 출력
+  // ===== 화면 출력 =====
   document.getElementById("title").value = post.title;
   document.getElementById("date").innerText = post.date;
   document.getElementById("content").innerHTML = post.content;
@@ -73,4 +73,53 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     nextEl.classList.add("disabled");
   }
+
+  // ===== 댓글 기능 =====
+  const commentName = document.getElementById("commentName");
+  const commentText = document.getElementById("commentText");
+  const commentSubmit = document.getElementById("commentSubmit");
+  const commentList = document.getElementById("commentList");
+
+  let comments = JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
+
+  // 댓글 출력 (위에 쌓이고, 사이에 선 생김)
+  function renderComments() {
+    commentList.innerHTML = "";
+
+    comments.forEach((c) => {
+      const div = document.createElement("div");
+      div.className = "comment-item";
+
+      div.innerHTML = `
+      <div class="name-date">${c.name} | ${c.date}</div>
+      <div class="text">${c.text}</div>
+    `;
+
+      commentList.appendChild(div);
+    });
+  }
+
+  renderComments();
+
+  // 댓글 등록
+  commentSubmit.addEventListener("click", () => {
+    if (!commentName.value || !commentText.value) {
+      alert("이름과 댓글을 입력하세요");
+      return;
+    }
+
+    const newComment = {
+      name: commentName.value,
+      text: commentText.value,
+      date: new Date().toLocaleDateString(),
+    };
+
+    comments.push(newComment);
+    localStorage.setItem(`comments_${id}`, JSON.stringify(comments));
+
+    commentName.value = "";
+    commentText.value = "";
+
+    renderComments();
+  });
 });
