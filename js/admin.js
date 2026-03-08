@@ -1,3 +1,23 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// ===== Firebase 설정 =====
+const firebaseConfig = {
+  apiKey: "여기에 API KEY",
+  authDomain: "여기에 authDomain",
+  projectId: "여기에 projectId",
+  storageBucket: "여기에 storageBucket",
+  messagingSenderId: "여기에 senderId",
+  appId: "여기에 appId",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 // ===== 오늘 날짜 자동 표시 =====
 const dateEl = document.getElementById("date");
 if (dateEl) {
@@ -15,13 +35,16 @@ imageUpload.addEventListener("change", function () {
   if (!file) return;
 
   const reader = new FileReader();
+
   reader.onload = function (e) {
     const img = new Image();
+
     img.onload = function () {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
-      const MAX_WIDTH = 1200; // 최대 가로 크기
+      const MAX_WIDTH = 1200;
+
       let width = img.width;
       let height = img.height;
 
@@ -32,9 +55,9 @@ imageUpload.addEventListener("change", function () {
 
       canvas.width = width;
       canvas.height = height;
+
       ctx.drawImage(img, 0, 0, width, height);
 
-      // ✅ 압축 (0.7 = 화질)
       const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.7);
 
       // wrapper 생성
@@ -57,6 +80,7 @@ imageUpload.addEventListener("change", function () {
 
       wrapper.appendChild(newImg);
       wrapper.appendChild(btn);
+
       editor.appendChild(wrapper);
 
       // spacer
@@ -67,10 +91,13 @@ imageUpload.addEventListener("change", function () {
       // 커서 이동
       const range = document.createRange();
       const sel = window.getSelection();
+
       range.setStartAfter(spacer);
       range.collapse(true);
+
       sel.removeAllRanges();
       sel.addRange(range);
+
       editor.focus();
     };
 
@@ -78,11 +105,12 @@ imageUpload.addEventListener("change", function () {
   };
 
   reader.readAsDataURL(file);
+
   this.value = "";
 });
 
 // ===== 글 저장 =====
-function savePost() {
+async function savePost() {
   const title = titleInput.value.trim();
   const contentHTML = editor.innerHTML.trim();
 
@@ -91,38 +119,35 @@ function savePost() {
     return;
   }
 
-  const posts = JSON.parse(localStorage.getItem("posts")) || [];
-
-  // HTML 파싱
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = contentHTML;
 
-  // wrapper 안의 첫 이미지 찾기
   const firstImg = tempDiv.querySelector("img");
 
   let thumb = "";
 
   if (firstImg && firstImg.src) {
     thumb = firstImg.src;
-    // ⭐ img만 지우지 말고 wrapper(div) 통째로 제거
   }
+
   const newPost = {
-    id: Date.now(),
     title: title,
     content: tempDiv.innerHTML,
     date: new Date().toISOString().split("T")[0],
     thumb: thumb,
   };
 
-  posts.unshift(newPost);
-
   try {
-    localStorage.setItem("posts", JSON.stringify(posts));
-  } catch (e) {
-    alert("이미지가 너무 커서 저장할 수 없습니다.\n이미지 크기를 줄여주세요.");
-    return;
-  }
+    await addDoc(collection(db, "posts"), newPost);
 
-  alert("저장 완료!");
-  window.location.href = "../menu/blog.html";
+    alert("저장 완료!");
+
+    window.location.href = "../menu/blog.html";
+  } catch (error) {
+    console.error(error);
+    alert("저장 실패");
+  }
 }
+
+// HTML 버튼에서 호출 가능하게
+window.savePost = savePost;

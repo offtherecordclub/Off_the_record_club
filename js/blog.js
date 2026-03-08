@@ -49,36 +49,60 @@ window.addEventListener("resize", function () {
 });
 
 // ===== 글 데이터 불러오기 =====
-const posts = JSON.parse(localStorage.getItem("posts")) || [];
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA5C2HVzMXab2OGWyPFJepeyo0AAur73wE",
+  authDomain: "offtherecordclub-c2c1b.firebaseapp.com",
+  projectId: "offtherecordclub-c2c1b",
+  storageBucket: "offtherecordclub-c2c1b.firebasestorage.app",
+  messagingSenderId: "241055780705",
+  appId: "1:241055780705:web:fed831bca1b077e178ff20",
+  measurementId: "G-2X4V64TGNL",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const blogList = document.getElementById("blogList");
 
-posts.sort((a, b) => b.id - a.id);
+async function loadPosts() {
+  const querySnapshot = await getDocs(collection(db, "posts"));
 
-posts.forEach((item) => {
-  const post = document.createElement("div");
-  post.className = "blog-item";
+  querySnapshot.forEach((doc) => {
+    const item = doc.data();
 
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = item.content;
-  tempDiv.querySelectorAll("button").forEach((btn) => btn.remove());
-  const previewText = tempDiv.innerText.slice(0, 80) + "...";
+    const post = document.createElement("div");
+    post.className = "blog-item";
 
-  post.innerHTML = `
-   <div class="blog-thumb">
-  ${item.thumb ? `<img src="${item.thumb}">` : ""}
-</div>
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = item.content;
 
-    <div class="blog-text">
-      <h2>${item.title}</h2>
-      <p>${previewText}</p>
-      <span>${item.date}</span>
-    </div>
-  `;
+    const previewText = tempDiv.innerText.slice(0, 80) + "...";
 
-  // ✅ 클릭 시 상세페이지 이동
-  post.addEventListener("click", () => {
-    window.location.href = `/html/blog/post.html?id=${item.id}`;
+    post.innerHTML = `
+      <div class="blog-thumb">
+        ${item.thumbnail ? `<img src="${item.thumbnail}">` : ""}
+      </div>
+
+      <div class="blog-text">
+        <h2>${item.title}</h2>
+        <p>${previewText}</p>
+        <span>${item.date}</span>
+      </div>
+    `;
+
+    post.addEventListener("click", () => {
+      window.location.href = `/html/blog/post.html?id=${doc.id}`;
+    });
+
+    blogList.appendChild(post);
   });
+}
 
-  blogList.appendChild(post);
-});
+loadPosts();
