@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!id) {
     alert("글을 찾을 수 없습니다.");
-    location.href = "blog.html";
+    location.href = "/html/menu/blog.html";
     return;
   }
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!docSnap.exists()) {
     alert("글을 찾을 수 없습니다.");
-    location.href = "blog.html";
+    location.href = "/html/menu/blog.html";
     return;
   }
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const dateEl = document.getElementById("date");
   const contentEl = document.getElementById("content");
 
-  if (titleEl) titleEl.innerText = post.title;
+  if (titleEl) titleEl.value = post.title;
   if (dateEl) dateEl.innerText = post.date;
   if (contentEl) contentEl.innerHTML = post.content;
 
@@ -90,13 +90,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       await deleteDoc(doc(db, "posts", id));
 
       alert("삭제 완료");
-      location.href = "blog.html";
+      location.href = "/html/menu/blog.html";
     });
   }
 
   // ===== 이전글 / 다음글 =====
   const snapshot = await getDocs(collection(db, "posts"));
-
   const posts = [];
 
   snapshot.forEach((d) => {
@@ -115,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (prevPost && prevEl) {
     prevEl.addEventListener("click", () => {
-      location.href = `post.html?id=${prevPost.id}`;
+      location.href = `/html/blog/post.html?id=${prevPost.id}`;
     });
   } else if (prevEl) {
     prevEl.classList.add("disabled");
@@ -123,14 +122,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (nextPost && nextEl) {
     nextEl.addEventListener("click", () => {
-      location.href = `post.html?id=${nextPost.id}`;
+      location.href = `/html/blog/post.html?id=${nextPost.id}`;
     });
   } else if (nextEl) {
     nextEl.classList.add("disabled");
   }
 
   // ===== 댓글 기능 =====
-
   const commentName = document.getElementById("commentName");
   const commentText = document.getElementById("commentText");
   const commentSubmit = document.getElementById("commentSubmit");

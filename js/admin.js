@@ -132,7 +132,7 @@ window.savePost = async function () {
     });
 
     alert("저장 완료");
-    location.href = "blog.html";
+    location.href = "/html/menu/blog.html";
   } catch (error) {
     console.error(error);
     alert("저장 실패");
