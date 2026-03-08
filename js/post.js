@@ -1,17 +1,51 @@
-document.addEventListener("DOMContentLoaded", () => {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  deleteDoc,
+  collection,
+  getDocs,
+  addDoc,
+  query,
+  where,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// Firebase 설정
+const firebaseConfig = {
+  apiKey: "여기",
+  authDomain: "여기",
+  projectId: "여기",
+  storageBucket: "여기",
+  messagingSenderId: "여기",
+  appId: "여기",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get("id"));
+  const id = params.get("id");
 
-  let posts = JSON.parse(localStorage.getItem("posts")) || [];
-  const post = posts.find((item) => item.id === id);
-
-  if (!post) {
+  if (!id) {
     alert("글을 찾을 수 없습니다.");
     location.href = "blog.html";
     return;
   }
 
-  // ===== 화면 출력 =====
+  // ===== 글 불러오기 =====
+  const docRef = doc(db, "posts", id);
+  const docSnap = await getDoc(docRef);
+
+  if (!docSnap.exists()) {
+    alert("글을 찾을 수 없습니다.");
+    location.href = "blog.html";
+    return;
+  }
+
+  const post = docSnap.data();
+
   document.getElementById("title").value = post.title;
   document.getElementById("date").innerText = post.date;
   document.getElementById("content").innerHTML = post.content;
@@ -38,22 +72,30 @@ document.addEventListener("DOMContentLoaded", () => {
     popupOverlay.classList.add("hidden");
   });
 
-  deleteBtn.addEventListener("click", () => {
+  deleteBtn.addEventListener("click", async () => {
     if (!confirm("정말 삭제할까요?")) return;
 
-    posts = posts.filter((item) => item.id !== id);
-    localStorage.setItem("posts", JSON.stringify(posts));
+    await deleteDoc(doc(db, "posts", id));
 
     alert("삭제 완료");
     location.href = "blog.html";
   });
 
   // ===== 이전글 / 다음글 =====
-  const sortedPosts = [...posts].sort((a, b) => b.id - a.id);
-  const currentIndex = sortedPosts.findIndex((item) => item.id === id);
+  const snapshot = await getDocs(collection(db, "posts"));
 
-  const prevPost = sortedPosts[currentIndex + 1];
-  const nextPost = sortedPosts[currentIndex - 1];
+  const posts = [];
+
+  snapshot.forEach((d) => {
+    posts.push({ id: d.id, ...d.data() });
+  });
+
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const currentIndex = posts.findIndex((item) => item.id === id);
+
+  const prevPost = posts[currentIndex + 1];
+  const nextPost = posts[currentIndex - 1];
 
   const prevEl = document.getElementById("prevPost");
   const nextEl = document.getElementById("nextPost");
@@ -75,25 +117,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== 댓글 기능 =====
+
   const commentName = document.getElementById("commentName");
   const commentText = document.getElementById("commentText");
   const commentSubmit = document.getElementById("commentSubmit");
   const commentList = document.getElementById("commentList");
 
-  let comments = JSON.parse(localStorage.getItem(`comments_${id}`)) || [];
-
-  // 댓글 출력 (위에 쌓이고, 사이에 선 생김)
-  function renderComments() {
+  async function renderComments() {
     commentList.innerHTML = "";
 
-    comments.forEach((c) => {
+    const q = query(collection(db, "comments"), where("postId", "==", id));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      const c = doc.data();
+
       const div = document.createElement("div");
       div.className = "comment-item";
 
       div.innerHTML = `
-      <div class="name-date">${c.name} | ${c.date}</div>
-      <div class="text">${c.text}</div>
-    `;
+        <div class="name-date">${c.name} | ${c.date}</div>
+        <div class="text">${c.text}</div>
+      `;
 
       commentList.appendChild(div);
     });
@@ -102,20 +147,18 @@ document.addEventListener("DOMContentLoaded", () => {
   renderComments();
 
   // 댓글 등록
-  commentSubmit.addEventListener("click", () => {
+  commentSubmit.addEventListener("click", async () => {
     if (!commentName.value || !commentText.value) {
       alert("이름과 댓글을 입력하세요");
       return;
     }
 
-    const newComment = {
+    await addDoc(collection(db, "comments"), {
+      postId: id,
       name: commentName.value,
       text: commentText.value,
       date: new Date().toLocaleDateString(),
-    };
-
-    comments.push(newComment);
-    localStorage.setItem(`comments_${id}`, JSON.stringify(comments));
+    });
 
     commentName.value = "";
     commentText.value = "";
