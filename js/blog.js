@@ -57,7 +57,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA5C2HVzMXab2OGWyPFJepeyo0AAur73wE",
+  apiKey: "AIzaSyA5C2HVzMXab2OGWyPFJepeyooAAur73wE",
   authDomain: "offtherecordclub-c2c1b.firebaseapp.com",
   projectId: "offtherecordclub-c2c1b",
   storageBucket: "offtherecordclub-c2c1b.firebasestorage.app",
