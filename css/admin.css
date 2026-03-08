@@ -75,7 +75,7 @@ header h1 a {
   border: none;
   text-align: center;
   font-size: 20px;
-  font-family: "SUIT-Medium";
+  font-family: "SUIT-Bold";
   outline: none;
 }
 .title-input::placeholder {
