@@ -84,12 +84,29 @@ imageUpload.addEventListener("change", (e) => {
       wrapper.appendChild(newImg);
       wrapper.appendChild(removeBtn);
 
-      // editor에 삽입
-      editor.appendChild(wrapper);
+      // 현재 커서 위치
+      const selection = window.getSelection();
+      const range = selection.getRangeAt(0);
 
-      // 🔴 다음 줄에서 글 시작
-      const br = document.createElement("br");
-      editor.appendChild(br);
+      // 🔵 현재 위치에서 줄 끊기
+      const br1 = document.createElement("br");
+      range.insertNode(br1);
+
+      // 이미지 삽입
+      range.setStartAfter(br1);
+      range.insertNode(wrapper);
+
+      // 🔵 이미지 아래 줄 생성
+      const br2 = document.createElement("br");
+      wrapper.after(br2);
+
+      // 🔵 커서를 이미지 아래로 이동
+      const newRange = document.createRange();
+      newRange.setStartAfter(br2);
+      newRange.collapse(true);
+
+      selection.removeAllRanges();
+      selection.addRange(newRange);
 
       // 썸네일
       if (!thumbnail) {
