@@ -101,7 +101,7 @@ hr {
   width: 100%;
   font-family: "SUIT-Regular";
   font-size: 14px;
-  line-height: 140%;
+  line-height: 150%;
   padding: 10px;
 }
 
@@ -223,7 +223,8 @@ hr {
 
 /* 댓글 내용 */
 .text {
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 150%;
 }
 
 /* 입력창 영역 (아웃라인 박스) */
