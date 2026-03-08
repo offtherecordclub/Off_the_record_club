@@ -46,9 +46,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const post = docSnap.data();
 
-  document.getElementById("title").value = post.title;
-  document.getElementById("date").innerText = post.date;
-  document.getElementById("content").innerHTML = post.content;
+  const titleEl = document.getElementById("title");
+  const dateEl = document.getElementById("date");
+  const contentEl = document.getElementById("content");
+
+  if (titleEl) titleEl.innerText = post.title;
+  if (dateEl) dateEl.innerText = post.date;
+  if (contentEl) contentEl.innerHTML = post.content;
 
   // ===== 삭제 팝업 =====
   const moreBtn = document.getElementById("moreBtn");
@@ -57,29 +61,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   const deleteBtn = document.getElementById("deleteBtn");
   const cancelBtn = document.getElementById("cancelBtn");
 
-  moreBtn.addEventListener("click", () => {
-    menuPopup.classList.remove("hidden");
-    popupOverlay.classList.remove("hidden");
-  });
+  if (moreBtn) {
+    moreBtn.addEventListener("click", () => {
+      menuPopup.classList.remove("hidden");
+      popupOverlay.classList.remove("hidden");
+    });
+  }
 
-  cancelBtn.addEventListener("click", () => {
-    menuPopup.classList.add("hidden");
-    popupOverlay.classList.add("hidden");
-  });
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      menuPopup.classList.add("hidden");
+      popupOverlay.classList.add("hidden");
+    });
+  }
 
-  popupOverlay.addEventListener("click", () => {
-    menuPopup.classList.add("hidden");
-    popupOverlay.classList.add("hidden");
-  });
+  if (popupOverlay) {
+    popupOverlay.addEventListener("click", () => {
+      menuPopup.classList.add("hidden");
+      popupOverlay.classList.add("hidden");
+    });
+  }
 
-  deleteBtn.addEventListener("click", async () => {
-    if (!confirm("정말 삭제할까요?")) return;
+  if (deleteBtn) {
+    deleteBtn.addEventListener("click", async () => {
+      if (!confirm("정말 삭제할까요?")) return;
 
-    await deleteDoc(doc(db, "posts", id));
+      await deleteDoc(doc(db, "posts", id));
 
-    alert("삭제 완료");
-    location.href = "blog.html";
-  });
+      alert("삭제 완료");
+      location.href = "blog.html";
+    });
+  }
 
   // ===== 이전글 / 다음글 =====
   const snapshot = await getDocs(collection(db, "posts"));
@@ -100,19 +112,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const prevEl = document.getElementById("prevPost");
   const nextEl = document.getElementById("nextPost");
 
-  if (prevPost) {
+  if (prevPost && prevEl) {
     prevEl.addEventListener("click", () => {
       location.href = `post.html?id=${prevPost.id}`;
     });
-  } else {
+  } else if (prevEl) {
     prevEl.classList.add("disabled");
   }
 
-  if (nextPost) {
+  if (nextPost && nextEl) {
     nextEl.addEventListener("click", () => {
       location.href = `post.html?id=${nextPost.id}`;
     });
-  } else {
+  } else if (nextEl) {
     nextEl.classList.add("disabled");
   }
 
@@ -124,13 +136,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const commentList = document.getElementById("commentList");
 
   async function renderComments() {
+    if (!commentList) return;
+
     commentList.innerHTML = "";
 
     const q = query(collection(db, "comments"), where("postId", "==", id));
     const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach((doc) => {
-      const c = doc.data();
+    querySnapshot.forEach((d) => {
+      const c = d.data();
 
       const div = document.createElement("div");
       div.className = "comment-item";
@@ -146,23 +160,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderComments();
 
-  // 댓글 등록
-  commentSubmit.addEventListener("click", async () => {
-    if (!commentName.value || !commentText.value) {
-      alert("이름과 댓글을 입력하세요");
-      return;
-    }
+  // ===== 댓글 등록 =====
+  if (commentSubmit) {
+    commentSubmit.addEventListener("click", async () => {
+      if (!commentName.value || !commentText.value) {
+        alert("이름과 댓글을 입력하세요");
+        return;
+      }
 
-    await addDoc(collection(db, "comments"), {
-      postId: id,
-      name: commentName.value,
-      text: commentText.value,
-      date: new Date().toLocaleDateString(),
+      await addDoc(collection(db, "comments"), {
+        postId: id,
+        name: commentName.value,
+        text: commentText.value,
+        date: new Date().toLocaleDateString(),
+      });
+
+      commentName.value = "";
+      commentText.value = "";
+
+      renderComments();
     });
-
-    commentName.value = "";
-    commentText.value = "";
-
-    renderComments();
-  });
+  }
 });
