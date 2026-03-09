@@ -79,6 +79,11 @@ imageUpload.addEventListener("change", (e) => {
         e.preventDefault();
         e.stopPropagation();
         wrapper.remove();
+
+        // 🔴 삭제된 이미지가 썸네일이면 초기화
+        if (thumbnail === newImg.src) {
+          thumbnail = "";
+        }
       };
 
       wrapper.appendChild(newImg);
