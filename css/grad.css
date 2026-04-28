@@ -686,13 +686,7 @@ summary::-webkit-details-marker {
   .content4 img,
   .content5 img,
   .content6 img,
-  .content7 img,
-  .content8 img,
-  .content9 img,
-  .content10 img,
-  .content11 img,
-  .content12 img,
-  .content713 img {
+  .content7 img {
     max-width: 70%; /* 부모 요소를 넘지 않도록 */
     height: auto;
     display: block;
