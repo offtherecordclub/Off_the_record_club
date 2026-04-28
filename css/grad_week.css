@@ -75,7 +75,7 @@ body:not(
       .tags a:hover,
       .image1 video:hover,
       .play-button:hover,
-      .nota a:hover
+      .vibecoding:hover
     )
   )
   .custom-cursor {
@@ -88,7 +88,7 @@ body:not(
 header h1 a,
 .tags a,
 .image1 video,
-.nota a {
+.vibecoding {
   cursor: none; /* 기본 커서를 숨김 */
 }
 
@@ -206,12 +206,11 @@ h2 {
   margin-top: -2px;
 }
 
-.nota a {
+.vibecoding {
   color: black;
-  margin-left: -120px;
 }
 
-.nota a:hover {
+.vibecoding:hover {
   color: #929292;
 }
 

@@ -80,8 +80,7 @@ body:not(
       .header-left:hover,
       .mobile-menu a:hover,
       .menu-toggle:hover,
-      .close-menu-btn:hover,
-      .vibecoding:hover
+      .close-menu-btn:hover
     )
   )
   .custom-cursor {
@@ -98,8 +97,7 @@ summary p,
 summary span,
 .header-left a,
 .menu-toggle,
-.close-menu-btn,
-.vibecoding {
+.close-menu-btn {
   cursor: none; /* 기본 커서를 숨김 */
 }
 
@@ -179,15 +177,6 @@ header h1 a {
   display: flex;
   flex-wrap: wrap;
   gap: 8px; /* 태그들 사이 간격 증가 */
-}
-
-a.vibecoding,
-a.vibecoding:visited {
-  color: black;
-}
-
-a.vibecoding:hover {
-  color: #929292;
 }
 
 .tags a {
