@@ -80,7 +80,8 @@ body:not(
       .header-left:hover,
       .mobile-menu a:hover,
       .menu-toggle:hover,
-      .close-menu-btn:hover
+      .close-menu-btn:hover,
+      .vibecoding:hover
     )
   )
   .custom-cursor {
@@ -97,7 +98,8 @@ summary p,
 summary span,
 .header-left a,
 .menu-toggle,
-.close-menu-btn {
+.close-menu-btn,
+.vibecoding {
   cursor: none; /* 기본 커서를 숨김 */
 }
 
@@ -177,6 +179,15 @@ header h1 a {
   display: flex;
   flex-wrap: wrap;
   gap: 8px; /* 태그들 사이 간격 증가 */
+}
+
+a.vibecoding,
+a.vibecoding:visited {
+  color: black;
+}
+
+a.vibecoding:hover {
+  color: #929292;
 }
 
 .tags a {
@@ -342,6 +353,7 @@ summary::-webkit-details-marker {
 .text .view_more :active {
   color: #505050;
 }
+
 .menu-toggle {
   display: none;
   width: 28px; /* 햄버거 아이콘 크기 고정 */
