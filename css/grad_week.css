@@ -264,7 +264,7 @@ h2 {
   height: auto;
   margin: 8px 0px;
   object-fit: contain;
-  border: 1px solid #dadada; /* 선 색상, 두께 조절 */
+  /* border: 1px solid #dadada;  */
 }
 
 /* 기본 반응형 스타일 */
